@@ -33,6 +33,16 @@ const khoaSchema = new mongoose.Schema({
       message: (props) => `${props.value} không phải là email hợp lệ!`,
     },
   },
+  chuyenNganh: {
+    type: [String], // Mảng các chuyên ngành
+    required: false,
+    validate: {
+      validator: function (v) {
+        return Array.isArray(v) && v.every((item) => typeof item === 'string'); // Đảm bảo tất cả phần tử là chuỗi
+      },
+      message: () => `Các chuyên ngành phải là danh sách các chuỗi hợp lệ!`,
+    },
+  },
 });
 
 module.exports = mongoose.model('khoa', khoaSchema);

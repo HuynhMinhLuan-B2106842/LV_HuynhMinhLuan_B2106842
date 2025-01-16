@@ -1,0 +1,40 @@
+CHƯƠNG TRÌNH TẬP HUÁN NGẮN HẠN
+CÔNG NGHỆ KỸ THUẬT
+
+PLC NÂNG CAO VÀ TRUYỀN THÔNG
+CC€-LINK - CTU.COE13
+
+
+
+
++ PLC dòng Q/QR và phần mềm lập trình GXWork 3 của Mitsubishi
+
++ Các loại dữ liệu trong PLC: bit, Word, DWord và chuyển đổi dữ liệu
+
++ Các module chức năng thông minh và truyền nhận dữ liệu với PLC
+
++ CC-link, nguyên lý vận hành và các ưu điểm
+
++ Điều khiển và cài đặt cơ bản của hệ truyền thông CC-link
+
+*% Thực hành tại Trường Đại học Cần Thơ (Trực tiếp 5 ngày)
+
++ Thực hành các lệnh cơ bản và nâng cao trên PLC dòng Q/QR
+
++ Thực hành các module đo nhiệt độ, ADC, DAC,...
+
++ Giám sát thông số vận hành trên PLC
+
++ Kết nối và vận hành CC-link với lO net mode
+
++ Kết nối và vận hành CC-link với remote device mode
+
++ Kết nối và vận hành CC-link với remote net mode
+
++ Ứng dụng CCŒ-link trong tình huống cụ thể
+
+
+ThS. Đào Minh Trung
+Email: minhtrung@ctu.edu.vn; Điện thoại: 0909 565 864
+
+¬

@@ -16,14 +16,13 @@ async function fetchKhoa() {
 }
 
 function extractIframeUrl(iframeString) {
-  // Sử dụng Regular Expression để trích xuất URL từ src trong iframe
   const regex = /<iframe.*?src="([^"]+)"/;
   const match = iframeString.match(regex);
 
   if (match && match[1]) {
-    return match[1]; // Trả về URL từ src trong iframe
+    return match[1];
   } else {
-    return null; // Trả về null nếu không tìm thấy URL
+    return null;
   }
 }
 
@@ -33,25 +32,26 @@ export default function KhoaList() {
   const [form] = Form.useForm();
   const [editingKhoa, setEditingKhoa] = useState(null);
 
-  // Lấy danh sách khoa khi component được render
   useEffect(() => {
     fetchKhoa()
       .then(setKhoaList)
       .catch(() => message.error('Lỗi khi tải danh sách khoa'));
   }, []);
 
-  // Xử lý thêm hoặc cập nhật khoa
   const handleOk = async () => {
     try {
       const values = await form.validateFields();
 
-      // Lấy URL từ link bản đồ nếu có
       if (values.linkBanDo) {
         values.linkBanDo = extractIframeUrl(values.linkBanDo);
       }
 
+      // Chuyển đổi chuyên ngành thành một mảng từ khóa
+      if (values.chuyenNganh) {
+        values.chuyenNganh = values.chuyenNganh.split(',').map((item) => item.trim());
+      }
+
       if (editingKhoa) {
-        // Cập nhật khoa
         const res = await fetch(`http://localhost:9000/api/khoa/${editingKhoa._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -66,7 +66,6 @@ export default function KhoaList() {
         );
         message.success('Cập nhật khoa thành công');
       } else {
-        // Thêm khoa mới
         const res = await fetch('http://localhost:9000/api/khoa', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -87,7 +86,6 @@ export default function KhoaList() {
     }
   };
 
-  // Xử lý xóa khoa
   const handleDelete = async (id) => {
     try {
       await fetch(`http://localhost:9000/api/khoa/${id}`, {
@@ -100,10 +98,15 @@ export default function KhoaList() {
     }
   };
 
-  // Mở modal để thêm hoặc sửa khoa
   const openModal = (khoa = null) => {
     setEditingKhoa(khoa);
-    if (khoa) form.setFieldsValue(khoa);
+    if (khoa) {
+      // Chuyển mảng chuyên ngành thành chuỗi phân tách bằng dấu phẩy
+      form.setFieldsValue({
+        ...khoa,
+        chuyenNganh: khoa.chuyenNganh.join(', '),
+      });
+    }
     setIsModalOpen(true);
   };
 
@@ -121,6 +124,7 @@ export default function KhoaList() {
               <p><strong>Địa chỉ:</strong> {khoa.diaChi}</p>
               <p><strong>Số điện thoại:</strong> {khoa.soDienThoai}</p>
               <p><strong>Email:</strong> {khoa.email}</p>
+              <p><strong>Chuyên ngành:</strong> {khoa.chuyenNganh.join(', ')}</p>
               {khoa.linkBanDo && (
                 <iframe
                   width="100%"
@@ -154,13 +158,13 @@ export default function KhoaList() {
           <Form.Item
             name="ten"
             label="Tên khoa"
-            rules={[{ required: true, message: 'Vui lòng nhập tên khoa' }]}>
+            rules={[{ required: true, message: 'Vui lòng nhập tên khoa' }]} >
             <Input />
           </Form.Item>
           <Form.Item
             name="diaChi"
             label="Địa chỉ"
-            rules={[{ required: true, message: 'Vui lòng nhập địa chỉ' }]}>
+            rules={[{ required: true, message: 'Vui lòng nhập địa chỉ' }]} >
             <Input />
           </Form.Item>
           <Form.Item name="linkBanDo" label="Link bản đồ">
@@ -183,6 +187,12 @@ export default function KhoaList() {
               { type: 'email', message: 'Email không hợp lệ' },
             ]}>
             <Input />
+          </Form.Item>
+          <Form.Item
+            name="chuyenNganh"
+            label="Chuyên ngành"
+            rules={[{ required: true, message: 'Vui lòng nhập chuyên ngành' }]} >
+            <Input placeholder="Nhập chuyên ngành, phân tách bằng dấu phẩy" />
           </Form.Item>
         </Form>
       </Modal>

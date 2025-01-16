@@ -1,16 +1,23 @@
 const GiangVien = require('../models/giangvienmodel');
+const Khoa = require('../models/khoamodel');
 
 // Thêm giảng viên mới
 exports.themGiangVien = async (req, res) => {
   try {
-    const { ten, chuyenMon, kinhNghiem, lienHe, khoa } = req.body;
+    const { ten, chuyenNganh, kinhNghiem, lienHe, khoa } = req.body;
     const hinhAnh = req.file ? req.file.path.replace('uploads\\', '') : null;
 
-    if (!ten || !chuyenMon || !kinhNghiem || !lienHe || !khoa) {
+    if (!ten || !chuyenNganh || !kinhNghiem || !lienHe || !khoa) {
       return res.status(400).json({ error: 'Vui lòng điền đầy đủ thông tin.' });
     }
 
-    const giangVien = new GiangVien({ ten, chuyenMon, kinhNghiem, hinhAnh, lienHe, khoa });
+    // Kiểm tra xem chuyên ngành có thuộc mảng chuyên ngành của khoa không
+    const khoaInfo = await Khoa.findById(khoa);
+    if (!khoaInfo || !khoaInfo.chuyenNganh.includes(chuyenNganh)) {
+      return res.status(400).json({ error: 'Chuyên ngành không hợp lệ trong khoa.' });
+    }
+
+    const giangVien = new GiangVien({ ten, chuyenNganh, kinhNghiem, hinhAnh, lienHe, khoa });
     await giangVien.save();
 
     res.status(201).json(giangVien);
@@ -48,10 +55,16 @@ exports.layGiangVienTheoId = async (req, res) => {
 // Cập nhật thông tin giảng viên
 exports.capNhatGiangVien = async (req, res) => {
   try {
-    const { ten, chuyenMon, kinhNghiem, lienHe, khoa } = req.body;
+    const { ten, chuyenNganh, kinhNghiem, lienHe, khoa } = req.body;
     const hinhAnh = req.file ? req.file.path.replace('uploads\\', '') : undefined;
 
-    const updatedFields = { ten, chuyenMon, kinhNghiem, lienHe, khoa };
+    // Kiểm tra xem chuyên ngành có thuộc mảng chuyên ngành của khoa không
+    const khoaInfo = await Khoa.findById(khoa);
+    if (!khoaInfo || !khoaInfo.chuyenNganh.includes(chuyenNganh)) {
+      return res.status(400).json({ error: 'Chuyên ngành không hợp lệ trong khoa.' });
+    }
+
+    const updatedFields = { ten, chuyenNganh, kinhNghiem, lienHe, khoa };
     if (hinhAnh) updatedFields.hinhAnh = hinhAnh;
 
     const giangVien = await GiangVien.findByIdAndUpdate(

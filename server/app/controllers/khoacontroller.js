@@ -26,7 +26,7 @@ exports.layKhoaTheoId = async (req, res) => {
 // Tạo mới khoa
 exports.taoKhoa = async (req, res) => {
   try {
-    const { ten, diaChi, linkBanDo, soDienThoai, email } = req.body;
+    const { ten, diaChi, linkBanDo, soDienThoai, email, chuyenNganh } = req.body;
 
     const newKhoa = new Khoa({
       ten,
@@ -34,6 +34,7 @@ exports.taoKhoa = async (req, res) => {
       linkBanDo,
       soDienThoai,
       email,
+      chuyenNganh, // Thêm danh sách chuyên ngành
     });
 
     const savedKhoa = await newKhoa.save();
@@ -46,11 +47,11 @@ exports.taoKhoa = async (req, res) => {
 // Cập nhật khoa theo ID
 exports.capNhatKhoa = async (req, res) => {
   try {
-    const { ten, diaChi, linkBanDo, soDienThoai, email } = req.body;
+    const { ten, diaChi, linkBanDo, soDienThoai, email, chuyenNganh } = req.body;
 
     const updatedKhoa = await Khoa.findByIdAndUpdate(
       req.params.id,
-      { ten, diaChi, linkBanDo, soDienThoai, email },
+      { ten, diaChi, linkBanDo, soDienThoai, email, chuyenNganh }, // Cập nhật cả danh sách chuyên ngành
       { new: true, runValidators: true }
     );
 

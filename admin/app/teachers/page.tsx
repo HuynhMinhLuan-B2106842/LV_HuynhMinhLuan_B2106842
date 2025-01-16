@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 const API_URL = 'http://localhost:9000/api/giang-vien';
-const KHOA_API_URL = 'http://localhost:9000/api/khoa'; // API để lấy danh sách các khoa
+const KHOA_API_URL = 'http://localhost:9000/api/khoa';
 
 async function fetchTeachers() {
   const res = await fetch(API_URL, { cache: 'no-store' });
@@ -22,19 +22,20 @@ async function fetchDepartments() {
 
 export default function Teachers() {
   const [teachers, setTeachers] = useState([]);
-  const [departments, setDepartments] = useState([]); // Dữ liệu khoa
+  const [departments, setDepartments] = useState([]);
+  const [majors, setMajors] = useState([]);
   const [form, setForm] = useState({
     _id: '',
     ten: '',
-    chuyenMon: '',
+    chuyenNganh: '',
     kinhNghiem: '',
     lienHe: '',
-    khoa: '', // Thêm trường khoa vào form
+    khoa: '',
     hinhAnh: null,
   });
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [showForm, setShowForm] = useState(false); // Trạng thái điều khiển hiển thị form
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const loadTeachersAndDepartments = async () => {
@@ -44,13 +45,23 @@ export default function Teachers() {
           fetchDepartments(),
         ]);
         setTeachers(teacherData);
-        setDepartments(departmentData); // Lưu danh sách khoa
+        setDepartments(departmentData);
       } catch (error) {
         setErrorMessage('Lỗi khi tải dữ liệu');
       }
     };
     loadTeachersAndDepartments();
   }, []);
+
+  useEffect(() => {
+    // Khi khoa thay đổi, cập nhật chuyên ngành từ mảng trong khoa
+    const department = departments.find(dep => dep._id === form.khoa);
+    if (department) {
+      setMajors(department.chuyenNganh || []); // Lấy mảng chuyên ngành từ khoa
+    } else {
+      setMajors([]);
+    }
+  }, [form.khoa, departments]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -66,10 +77,10 @@ export default function Teachers() {
     try {
       const formData = new FormData();
       formData.append('ten', form.ten);
-      formData.append('chuyenMon', form.chuyenMon);
+      formData.append('chuyenNganh', form.chuyenNganh);
       formData.append('kinhNghiem', form.kinhNghiem);
       formData.append('lienHe', form.lienHe);
-      formData.append('khoa', form.khoa); // Thêm khoa vào formData
+      formData.append('khoa', form.khoa);
       if (form.hinhAnh) {
         formData.append('hinhAnh', form.hinhAnh);
       }
@@ -89,12 +100,12 @@ export default function Teachers() {
         if (!res.ok) throw new Error('Lỗi khi thêm giảng viên');
       }
 
-      setForm({ _id: '', ten: '', chuyenMon: '', kinhNghiem: '', lienHe: '', khoa: '', hinhAnh: null });
+      setForm({ _id: '', ten: '', chuyenNganh: '', kinhNghiem: '', lienHe: '', khoa: '', hinhAnh: null });
       setIsEditing(false);
       const updatedTeachers = await fetchTeachers();
       setTeachers(updatedTeachers);
-      setShowForm(false); // Đóng form sau khi thành công
-      setErrorMessage(''); // Reset error message if successful
+      setShowForm(false);
+      setErrorMessage('');
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -103,7 +114,7 @@ export default function Teachers() {
   const handleEdit = (teacher) => {
     setForm({ ...teacher, hinhAnh: null });
     setIsEditing(true);
-    setShowForm(true); // Hiển thị form khi chỉnh sửa
+    setShowForm(true);
   };
 
   const handleDelete = async (id) => {
@@ -122,10 +133,8 @@ export default function Teachers() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-6">Đội ngũ Giảng viên</h1>
 
-      {/* Error Message */}
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
-      {/* Form Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded shadow-lg w-1/2">
@@ -137,33 +146,6 @@ export default function Teachers() {
                   name="ten"
                   placeholder="Tên giảng viên"
                   value={form.ten}
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 rounded"
-                />
-                <input
-                  type="text"
-                  name="chuyenMon"
-                  placeholder="Chuyên môn"
-                  value={form.chuyenMon}
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 rounded"
-                />
-                <input
-                  type="text"
-                  name="kinhNghiem"
-                  placeholder="Kinh nghiệm"
-                  value={form.kinhNghiem}
-                  onChange={handleInputChange}
-                  required
-                  className="border p-2 rounded"
-                />
-                <input
-                  type="text"
-                  name="lienHe"
-                  placeholder="Liên hệ"
-                  value={form.lienHe}
                   onChange={handleInputChange}
                   required
                   className="border p-2 rounded"
@@ -182,17 +164,63 @@ export default function Teachers() {
                     </option>
                   ))}
                 </select>
+                <select
+                  name="chuyenNganh"
+                  value={form.chuyenNganh}
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 rounded"
+                  disabled={!form.khoa}
+                >
+                  <option value="">Chọn chuyên ngành</option>
+                  {majors.map((major) => (
+                    <option key={major} value={major}>
+                      {major}
+                    </option>
+                  ))}
+                </select>
                 <input
-                  type="file"
-                  accept="image/jpeg,image/png,image/gif"
-                  onChange={handleFileChange}
+                  type="text"
+                  name="kinhNghiem"
+                  placeholder="Số năm kinh nghiệm"
+                  value={form.kinhNghiem}
+                  onChange={handleInputChange}
+                  required
                   className="border p-2 rounded"
                 />
+                <input
+                  type="text"
+                  name="lienHe"
+                  placeholder="Email liên hệ"
+                  value={form.lienHe}
+                  onChange={handleInputChange}
+                  required
+                  className="border p-2 rounded"
+                />
+
+                <label htmlFor="avatar" className="cursor-pointer inline-block px-4 py-2 rounded">
+                  Thêm avatar
+                </label>
+                <input
+                  type="file"
+                  id="avatar"
+                  accept="image/jpeg,image/png,image/gif"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+
+                {form.hinhAnh && (
+                  <div className="mt-4">
+                    <img
+                      src={URL.createObjectURL(form.hinhAnh)}
+                      alt="Avatar preview"
+                      className="w-32 h-32 object-cover rounded-full"
+                    />
+                  </div>
+                )}
               </div>
-              <button
-                type="submit"
-                className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-              >
+
+              <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
                 {isEditing ? 'Cập nhật' : 'Thêm'}
               </button>
               <button
@@ -200,26 +228,20 @@ export default function Teachers() {
                 onClick={() => setShowForm(false)}
                 className="mt-4 ml-2 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700"
               >
-                Đóng
+                Hủy
               </button>
             </form>
           </div>
         </div>
       )}
 
-      {/* Button to Add New Teacher */}
       <button
-        onClick={() => {
-          setForm({ _id: '', ten: '', chuyenMon: '', kinhNghiem: '', lienHe: '', khoa: '', hinhAnh: null });
-          setIsEditing(false);
-          setShowForm(true); // Hiển thị form khi thêm mới
-        }}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 mb-4"
+        onClick={() => setShowForm(true)}
+        className="mb-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700"
       >
         Thêm Giảng viên
       </button>
 
-      {/* List of Teachers */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {teachers.map((teacher) => (
           <div key={teacher._id} className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -231,7 +253,7 @@ export default function Teachers() {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{teacher.ten}</h2>
               <p>
-                <strong>Chuyên môn:</strong> {teacher.chuyenMon}
+                <strong>Chuyên ngành:</strong> {teacher.chuyenNganh}
               </p>
               <p>
                 <strong>Kinh nghiệm:</strong> {teacher.kinhNghiem}
@@ -245,13 +267,13 @@ export default function Teachers() {
               <div className="flex space-x-2 mt-4">
                 <button
                   onClick={() => handleEdit(teacher)}
-                  className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-700"
+                  className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-700"
                 >
                   Sửa
                 </button>
                 <button
                   onClick={() => handleDelete(teacher._id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700"
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
                 >
                   Xóa
                 </button>

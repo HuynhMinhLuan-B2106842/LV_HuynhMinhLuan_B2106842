@@ -1,0 +1,42 @@
+
+Thời gian tập huấn 7 ngày
+
+Tên chương trình
+
+Thời điểm tổ chức Tổ chức 2 lần/năm hoặc theo yêu cầu
+
+Đối tượng tập huấn Cán bộ kỹ thuật, cán bộ quản lý, sinh viên kỹ thuật năm 3 trở lên, học viên
+Nội dung tập huấn * Tập huấn lý thuyết tại Trường Đại học Cần Thơ (trực tiếp, 2 ngày)
+
++ PLC dòng Q/QR và phần mềm lập trình GXWork 3 của Mitsubishi
+
+
++ Các module chức năng thông minh và truyền nhận dữ liệu với PLC
+
++ CC-link, nguyên lý vận hành và các ưu điểm
+
++ Điều khiển và cài đặt cơ bản của hệ truyền thông CC-link
+
+*% Thực hành tại Trường Đại học Cần Thơ (Trực tiếp 5 ngày)
+
++ Thực hành các lệnh cơ bản và nâng cao trên PLC dòng Q/QR
+
++ Thực hành các module đo nhiệt độ, ADC, DAC,...
+
++ Giám sát thông số vận hành trên PLC
+
++ Kết nối và vận hành CC-link với lO net mode
+
++ Kết nối và vận hành CC-link với remote device mode
+
++ Kết nối và vận hành CC-link với remote net mode
+
++ Ứng dụng CCŒ-link trong tình huống cụ thể
+
+Chịu trách nhiệm chính Giảng viên và chuyên gia
+
+Thông tin liên hệ
+ThS. Đào Minh Trung
+
+¬
+
