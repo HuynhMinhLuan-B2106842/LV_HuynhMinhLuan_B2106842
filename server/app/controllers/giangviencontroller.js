@@ -99,3 +99,17 @@ exports.xoaGiangVien = async (req, res) => {
     res.status(500).json({ error: 'Lỗi khi xóa giảng viên.' });
   }
 };
+// Lấy danh sách giảng viên theo khoa
+exports.layDanhSachGiangVienTheoKhoa = async (req, res) => {
+  try {
+    const khoaId = req.params.khoaId;
+    const giangVien = await GiangVien.find({ khoa: khoaId }).populate('khoa', 'ten');
+    if (!giangVien || giangVien.length === 0) {
+      return res.status(404).json({ error: 'Không có giảng viên trong khoa này.' });
+    }
+    res.status(200).json(giangVien);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Lỗi khi lấy danh sách giảng viên theo khoa.' });
+  }
+};
