@@ -1,60 +1,78 @@
-import { notFound } from 'next/navigation'
-import { programs } from '../../data/programs'
+"use client";
 
-// const programs = [
-//   { 
-//     id: 1, 
-//     name: 'Khóa học Lập trình Web Chuyên sâu', 
-//     description: 'Học các công nghệ web mới nhất và xây dựng các ứng dụng web hiện đại.',
-//     instructor: 'Nguyễn Văn A',
-//     duration: '12 tuần',
-//     location: 'Trực tuyến',
-//     price: '9.999.000 VNĐ',
-//     registration: 'Đang mở đăng ký'
-//   },
-//   { 
-//     id: 2, 
-//     name: 'Cơ bản về Khoa học Dữ liệu', 
-//     description: 'Làm chủ các kiến thức cơ bản về khoa học dữ liệu và phân tích.',
-//     instructor: 'Trần Thị B',
-//     duration: '8 tuần',
-//     location: 'Trực tuyến',
-//     price: '7.999.000 VNĐ',
-//     registration: 'Đang mở đăng ký'
-//   },
-//   // Thêm các chương trình khác ở đây nếu cần
-// ]
+import { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
 
-export default function ProgramDetails({ params }: { params: { id: string } }) {
-  const program = programs.find(p => p.id === parseInt(params.id))
+const API_URL = "http://localhost:9000/api/chuong-trinh";
+
+async function fetchProgram(id) {
+  const res = await fetch(`${API_URL}/${id}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Lỗi khi lấy dữ liệu chương trình");
+  }
+  return res.json();
+}
+
+export default function ProgramDetails() {
+  const [program, setProgram] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const { id } = useParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        if (id !== "new") {
+          const programData = await fetchProgram(id);
+          setProgram(programData);
+        }
+      } catch (error) {
+        setErrorMessage("Lỗi khi tải dữ liệu");
+      }
+    };
+    loadData();
+  }, [id]);
 
   if (!program) {
-    notFound()
+    return <p>Đang tải...</p>;
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">{program.name}</h1>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <p className="mb-4">{program.description}</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <h2 className="text-xl font-semibold mb-2">Chi tiết Chương trình</h2>
-            <p><strong>Giảng viên:</strong> {program.instructor}</p>
-            <p><strong>Thời gian:</strong> {program.duration}</p>
-            <p><strong>Địa điểm:</strong> {program.location}</p>
-            <p><strong>Học phí:</strong> {program.price}</p>
-          </div>
-          <div>
-            <h2 className="text-xl font-semibold mb-2">Đăng ký</h2>
-            <p>{program.registration}</p>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-              Đăng ký ngay
-            </button>
-          </div>
+      <h1 className="text-2xl font-bold">Chi tiết Chương trình</h1>
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      <div className="bg-white p-6 shadow-md rounded-lg">
+        <p><strong>Tên chương trình:</strong> {program.tenChuongTrinh}</p>
+        <p><strong>Thời gian tập huấn:</strong> {program.thoiGianTapHuan}</p>
+        <p><strong>Thời điểm tổ chức:</strong> {program.thoiDiemToChuc}</p>
+        <p><strong>Đối tượng và số lượng:</strong> {program.doiTuongVaSoLuong}</p>
+        <p><strong>Nội dung tập huấn:</strong> {program.noiDungTapHuan}</p>
+        <p><strong>Khoa:</strong> {program.khoa?.ten || "Không có"}</p>
+        <p><strong>Chịu trách nhiệm chính:</strong></p>
+        <ul>
+          {program.chiuTrachNhiemChinh && program.chiuTrachNhiemChinh.length > 0 ? (
+            program.chiuTrachNhiemChinh.map((gv) => (
+              <li key={gv._id}>{gv.ten}</li>
+            ))
+          ) : (
+            <p>Không có</p>
+          )}
+        </ul>
+        <div className="flex mt-4">
+          <button
+            onClick={() => router.push("/programs")}
+            className="bg-blue-500 text-white px-4 py-2 rounded mr-4"
+          >
+            Quay lại
+          </button>
+          <button
+            onClick={() => router.push("/register")} // Đưa người dùng đến trang đăng ký mà không có ID
+            className="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            Đăng ký
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
-

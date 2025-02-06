@@ -1,39 +1,90 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Register() {
   const [formData, setFormData] = useState({
-    name: '',
+    ten: '',
     email: '',
-    program: '',
-    paymentMethod: ''
+    soDienThoai: '',
+    chuongTrinh: ''
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const [chuongTrinhList, setChuongTrinhList] = useState([]) // Danh sách các chương trình
+  const [message, setMessage] = useState('') // Thông báo đăng ký thành công hoặc lỗi
+
+  useEffect(() => {
+    // Lấy danh sách chương trình từ backend
+    fetch('http://localhost:9000/api/chuong-trinh')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Lỗi khi tải danh sách chương trình')
+        }
+        return response.json()
+      })
+      .then(data => setChuongTrinhList(data))
+      .catch(error => console.error(error))
+  }, [])
+
+  const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prevState => ({ ...prevState, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Ở đây bạn thường sẽ gửi dữ liệu form đến backend
-    console.log('Đã gửi form:', formData)
-    // Reset form sau khi gửi
-    setFormData({ name: '', email: '', program: '', paymentMethod: '' })
+    try {
+      const response = await fetch('http://localhost:9000/api/dang-ky', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        // Nếu lỗi từ backend, hiển thị thông báo cụ thể
+        setMessage(data.message || 'Có lỗi xảy ra. Vui lòng thử lại.')
+        return
+      }
+
+      console.log('Đăng ký thành công:', data)
+      setMessage('Đăng ký thành công!') // Hiển thị thông báo
+      // Reset form sau khi gửi thành công
+      setFormData({ ten: '', email: '', soDienThoai: '', chuongTrinh: '' })
+    } catch (error) {
+      console.error(error)
+      setMessage('Có lỗi xảy ra. Vui lòng thử lại.') // Hiển thị thông báo lỗi
+    }
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-6">Đăng ký Chương trình</h1>
+
+      {/* Hiển thị thông báo nếu có */}
+      {message && (
+        <div
+          className={`mb-4 p-4 rounded ${
+            message.includes('thành công')
+              ? 'bg-green-100 text-green-700'
+              : 'bg-red-100 text-red-700'
+          }`}
+        >
+          {message}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
         <div className="mb-4">
-          <label htmlFor="name" className="block mb-2">Họ và tên:</label>
+          <label htmlFor="ten" className="block mb-2">Họ và tên:</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={formData.name}
+            id="ten"
+            name="ten"
+            value={formData.ten}
             onChange={handleChange}
             required
             className="w-full p-2 border rounded"
@@ -52,47 +103,34 @@ export default function Register() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="program" className="block mb-2">Chương trình:</label>
+          <label htmlFor="soDienThoai" className="block mb-2">Số điện thoại:</label>
+          <input
+            type="text"
+            id="soDienThoai"
+            name="soDienThoai"
+            value={formData.soDienThoai}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="chuongTrinh" className="block mb-2">Chương trình:</label>
           <select
-            id="program"
-            name="program"
-            value={formData.program}
+            id="chuongTrinh"
+            name="chuongTrinh"
+            value={formData.chuongTrinh}
             onChange={handleChange}
             required
             className="w-full p-2 border rounded"
           >
             <option value="">Chọn một chương trình</option>
-            <option value="web-development">Khóa học Lập trình Web Chuyên sâu</option>
-            <option value="data-science">Cơ bản về Khoa học Dữ liệu</option>
-            <option value="digital-marketing">Marketing Kỹ thuật số Cơ bản</option>
+            {chuongTrinhList.map(program => (
+              <option key={program._id} value={program._id}>
+                {program.tenChuongTrinh}
+              </option>
+            ))}
           </select>
-        </div>
-        <div className="mb-4">
-          <label className="block mb-2">Phương thức thanh toán:</label>
-          <div>
-            <label className="inline-flex items-center mr-4">
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="credit-card"
-                checked={formData.paymentMethod === 'credit-card'}
-                onChange={handleChange}
-                className="mr-2"
-              />
-              Thẻ tín dụng
-            </label>
-            <label className="inline-flex items-center">
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="bank-transfer"
-                checked={formData.paymentMethod === 'bank-transfer'}
-                onChange={handleChange}
-                className="mr-2"
-              />
-              Chuyển khoản ngân hàng
-            </label>
-          </div>
         </div>
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Đăng ký
@@ -101,4 +139,3 @@ export default function Register() {
     </div>
   )
 }
-

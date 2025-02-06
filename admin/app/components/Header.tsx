@@ -35,6 +35,7 @@ const Header = () => {
             <li><Link href="/news" className="hover:text-blue-200">Tin tức</Link></li>
             <li><Link href="/contacts" className="hover:text-blue-200">Liên hệ</Link></li>
             <li><Link href="/register" className="hover:text-blue-200">Đăng ký</Link></li>
+            <li><Link href="/thongke" className="hover:text-blue-200">Thống kê</Link></li>
           </ul>
         </div>
       </nav>
