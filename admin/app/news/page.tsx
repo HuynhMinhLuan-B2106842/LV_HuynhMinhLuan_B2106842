@@ -9,6 +9,7 @@ interface NewsItem {
   tieuDe: string;
   ngay: string;
   moTaNgan: string;
+  noiDung: string;
 }
 
 const formatDate = (dateString: string): string => {
@@ -45,6 +46,7 @@ export default function NewsPage() {
           tieuDe: item.tieuDe,
           ngay: item.ngay,
           moTaNgan: item.moTaNgan,
+          noiDung: item.noiDung
         }));
         setNewsList(formattedData);
       } catch (err: any) {
@@ -148,17 +150,18 @@ export default function NewsPage() {
       <h1 className="title">Danh sách tin tức</h1>
       <button onClick={() => handleOpenModal()} className="add-news-btn">Thêm tin tức</button>
       <ul className="news-list">
-        {newsList.map((news) => (
-          <li key={news.id} className="news-item">
-            <Link href={`/news/${news.id}`} className="news-link">{news.tieuDe}</Link>
-            <p className="news-date">{formatDate(news.ngay)}</p>
-            <p className="news-short-description">{news.moTaNgan}</p>
-            <div className="news-actions">
-              <button onClick={() => handleOpenModal(news)} className="edit-btn">Sửa</button>
-              <button onClick={() => handleDeleteNews(news.id)} className="delete-btn">Xóa</button>
-            </div>
-          </li>
-        ))}
+      {newsList.map((news, index) => (
+        <li key={news.id || index} className="news-item">
+          <Link href={`/news/${news.id}`} className="news-link">{news.tieuDe}</Link>
+          <p className="news-date">{formatDate(news.ngay)}</p>
+          <p className="news-short-description">{news.moTaNgan}</p>
+          <div className="news-actions">
+            <button onClick={() => handleOpenModal(news)} className="edit-btn">Sửa</button>
+            <button onClick={() => handleDeleteNews(news.id)} className="delete-btn">Xóa</button>
+          </div>
+        </li>
+      ))}
+
       </ul>
 
       {visible && (
@@ -302,7 +305,7 @@ export default function NewsPage() {
         .modal-content {
           background: #fff;
           padding: 30px;
-          width: 400px;
+          width: 600px;
           border-radius: 8px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }

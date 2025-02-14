@@ -61,10 +61,19 @@ export default function ProgramList() {
     router.push("/programs/new");
   };
 
-  // Lọc chương trình theo tên và khoa
+  const normalizeText = (text) => {
+    return text
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .replace(/đ/g, "d")
+      .replace(/Đ/g, "D")
+      .toLowerCase();
+  };
+
+  // Lọc chương trình theo tên và khoa (không phân biệt dấu và chữ "d" với "đ")
   const filteredPrograms = programs.filter((program) => {
     return (
-      program.tenChuongTrinh?.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      normalizeText(program.tenChuongTrinh || "").includes(normalizeText(searchTerm)) &&
       (selectedKhoa === "" || program.khoa?._id === selectedKhoa)
     );
   });
@@ -99,13 +108,7 @@ export default function ProgramList() {
         </select>
       </div>
 
-      <div className="mb-4">
-        <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={handleAddProgram}>
-          Thêm Chương trình
-        </button>
-      </div>
-
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {filteredPrograms.map((program) => (
           <div
             key={program._id}
@@ -118,7 +121,6 @@ export default function ProgramList() {
               <p><strong>Thời gian tập huấn:</strong> {program.thoiGianTapHuan}</p>
               <p><strong>Thời điểm tổ chức:</strong> {program.thoiDiemToChuc}</p>
               <p><strong>Đối tượng và số lượng:</strong> {program.doiTuongVaSoLuong}</p>
-              {/* <p><strong>Khoa:</strong> {program.khoa?.ten || "Không xác định"}</p> */}
             </div>
 
             <div className="mt-2">

@@ -12,6 +12,7 @@ export default function Register() {
 
   const [chuongTrinhList, setChuongTrinhList] = useState([]) // Danh sách các chương trình
   const [message, setMessage] = useState('') // Thông báo đăng ký thành công hoặc lỗi
+  const [errors, setErrors] = useState({}) // Lưu lỗi nhập liệu
 
   useEffect(() => {
     // Lấy danh sách chương trình từ backend
@@ -26,13 +27,41 @@ export default function Register() {
       .catch(error => console.error(error))
   }, [])
 
+  const validateField = (name, value) => {
+    let error = ''
+
+    if (name === 'email') {
+      const emailRegex = /\S+@\S+\.\S+/
+      if (!emailRegex.test(value)) {
+        error = 'Email không hợp lệ (VD: example@email.com)'
+      }
+    }
+
+    if (name === 'soDienThoai') {
+      const phoneRegex = /^(0[3|5|7|8|9])([0-9]{8})$/
+      if (!phoneRegex.test(value)) {
+        error = 'Số điện thoại không hợp lệ (VD: 0987654321)'
+      }
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: error }))
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prevState => ({ ...prevState, [name]: value }))
+    validateField(name, value)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    // Kiểm tra nếu có lỗi nhập liệu
+    if (Object.values(errors).some(error => error)) {
+      setMessage('Vui lòng kiểm tra lại thông tin nhập vào!')
+      return
+    }
+
     try {
       const response = await fetch('http://localhost:9000/api/dang-ky', {
         method: 'POST',
@@ -45,18 +74,17 @@ export default function Register() {
       const data = await response.json()
 
       if (!response.ok) {
-        // Nếu lỗi từ backend, hiển thị thông báo cụ thể
         setMessage(data.message || 'Có lỗi xảy ra. Vui lòng thử lại.')
         return
       }
 
       console.log('Đăng ký thành công:', data)
-      setMessage('Đăng ký thành công!') // Hiển thị thông báo
-      // Reset form sau khi gửi thành công
+      setMessage('Đăng ký thành công!')
       setFormData({ ten: '', email: '', soDienThoai: '', chuongTrinh: '' })
+      setErrors({})
     } catch (error) {
       console.error(error)
-      setMessage('Có lỗi xảy ra. Vui lòng thử lại.') // Hiển thị thông báo lỗi
+      setMessage('Có lỗi xảy ra. Vui lòng thử lại.')
     }
   }
 
@@ -64,7 +92,6 @@ export default function Register() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-6">Đăng ký Chương trình</h1>
 
-      {/* Hiển thị thông báo nếu có */}
       {message && (
         <div
           className={`mb-4 p-4 rounded ${
@@ -87,9 +114,11 @@ export default function Register() {
             value={formData.ten}
             onChange={handleChange}
             required
+            placeholder="Nhập họ và tên"
             className="w-full p-2 border rounded"
           />
         </div>
+
         <div className="mb-4">
           <label htmlFor="email" className="block mb-2">Email:</label>
           <input
@@ -99,9 +128,12 @@ export default function Register() {
             value={formData.email}
             onChange={handleChange}
             required
+            placeholder="Nhập email hợp lệ (VD: example@email.com)"
             className="w-full p-2 border rounded"
           />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
         </div>
+
         <div className="mb-4">
           <label htmlFor="soDienThoai" className="block mb-2">Số điện thoại:</label>
           <input
@@ -111,9 +143,12 @@ export default function Register() {
             value={formData.soDienThoai}
             onChange={handleChange}
             required
+            placeholder="Nhập số điện thoại (VD: 0987654321)"
             className="w-full p-2 border rounded"
           />
+          {errors.soDienThoai && <p className="text-red-500 text-sm">{errors.soDienThoai}</p>}
         </div>
+
         <div className="mb-4">
           <label htmlFor="chuongTrinh" className="block mb-2">Chương trình:</label>
           <select
@@ -132,6 +167,7 @@ export default function Register() {
             ))}
           </select>
         </div>
+
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Đăng ký
         </button>

@@ -14,4 +14,6 @@ router.post('/', tinTucController.taoTinTucMoi);
 // Xóa tin tức
 router.delete('/:id', tinTucController.xoaTinTuc);
 
+// Cập nhật tin tức
+router.put('/:id', tinTucController.capNhatTinTuc);
 module.exports = router;

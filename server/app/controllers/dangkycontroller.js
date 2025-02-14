@@ -120,6 +120,7 @@ exports.capNhatTrangThaiDuyet = async (req, res) => {
   }
 };
 // Tra cứu thông tin đăng ký bằng email hoặc số điện thoại
+// API tra cứu tất cả đăng ký
 exports.traCuuDangKy = async (req, res) => {
   try {
     const { keyword } = req.query;
@@ -128,17 +129,18 @@ exports.traCuuDangKy = async (req, res) => {
       return res.status(400).json({ message: 'Vui lòng cung cấp từ khóa để tra cứu!' });
     }
 
-    // Tìm kiếm thông tin đăng ký dựa trên email hoặc số điện thoại
-    const registration = await Register.findOne({
+    // Tìm tất cả các đăng ký có email hoặc số điện thoại khớp
+    const registrations = await Register.find({
       $or: [{ email: keyword }, { soDienThoai: keyword }],
     }).populate('chuongTrinh', 'tenChuongTrinh');
 
-    if (!registration) {
+    if (registrations.length === 0) {
       return res.status(404).json({ message: 'Không tìm thấy thông tin đăng ký!' });
     }
 
-    res.status(200).json({ message: 'Tra cứu thành công', data: registration });
+    res.status(200).json({ message: 'Tra cứu thành công', data: registrations });
   } catch (error) {
     res.status(500).json({ message: 'Lỗi khi lấy thông tin đăng ký', error: error.message });
   }
 };
+

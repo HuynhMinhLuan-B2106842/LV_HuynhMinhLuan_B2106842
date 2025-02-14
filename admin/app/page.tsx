@@ -99,7 +99,7 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 text-center">
       <h1 className="text-4xl font-bold mb-6">
         Chào mừng đến với Trang Web Đào Tạo của chúng tôi
       </h1>
@@ -107,6 +107,7 @@ export default function Home() {
       {/* Form cập nhật */}
       <section className="mb-8">
         <button
+        
           onClick={() => setIsEditing(true)}
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 mb-4"
         >
@@ -118,12 +119,12 @@ export default function Home() {
             <h2 className="text-2xl font-semibold mb-4">Chỉnh sửa giới thiệu</h2>
             <div className="mb-4">
               <label className="block font-semibold">Tổng quan:</label>
-              <input
-                type="text"
-                name="tongquan"
-                value={formData.tongquan}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
+              <textarea
+              name="tongquan"
+              value={formData.tongquan}
+              onChange={handleChange}
+              rows={4} // Số dòng hiển thị ban đầu
+              className="w-full p-2 border rounded"
               />
             </div>
             <div className="mb-4">
@@ -183,13 +184,13 @@ export default function Home() {
       {/* Hiển thị nội dung hiện tại */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Tổng quan</h2>
-        <p className="mb-4">{gioiThieu.tongquan}</p>
+        <p className="mb-4 whitespace-pre-line max-w-2xl mx-auto text-justify">{gioiThieu.tongquan}</p>
       </section>
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Mục tiêu</h2>
-        <ul className="mb-4">
+        <ul className="mb-4 max-w-2xl mx-auto text-justify">
           {gioiThieu.muctieu.split("\n").map((line, index) => (
-            <li key={index} className="mb-2">- {line}</li>
+            <li key={index} className="mb-2"> {line}</li>
           ))}
         </ul>
       </section>
@@ -197,12 +198,12 @@ export default function Home() {
       {/* Các chương trình nổi bật */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">Chương trình nổi bật</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
           {featuredPrograms && featuredPrograms.length > 0 ? (
             featuredPrograms.map((chuong, index) => (
-              <div key={index} className="bg-blue-100 p-4 rounded">
+              <div key={index} className="bg-blue-100 p-4 rounded shadow-md mx-auto w-full max-w-md text-center">
                 <h3 className="text-xl font-semibold mb-2">{chuong.tenChuongTrinh}</h3>
-                <p>{chuong.noiDungTapHuan}</p>
+                <p><strong>Thời gian tập huấn:</strong> {chuong.thoiGianTapHuan}</p>
                 <Link
                   href={`/programs/${chuong._id}`}
                   className="text-blue-600 hover:underline"
@@ -220,8 +221,8 @@ export default function Home() {
       {/* Ưu đãi đặc biệt */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Ưu đãi đặc biệt</h2>
-        <div className="bg-yellow-100 p-4 rounded">
-          <h3 className="text-xl font-semibold mb-2">Giảm giá mùa hè</h3>
+        <div className="bg-yellow-100 p-4 rounded shadow-md mx-auto w-full max-w-md text-center">
+          <h3 className="text-xl font-semibold mb-2">Giảm giá</h3>
           <p className="mb-4">{gioiThieu.giamgia}</p>
           <Link href="/programs" className="text-blue-600 hover:underline">
             Xem các chương trình

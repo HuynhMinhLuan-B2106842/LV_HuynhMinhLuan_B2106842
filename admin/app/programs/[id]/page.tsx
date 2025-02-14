@@ -69,12 +69,6 @@ export default function ProgramDetails() {
           >
             Quay lại
           </button>
-          <button
-            onClick={() => router.push("/register")} // Đưa người dùng đến trang đăng ký mà không có ID
-            className="bg-green-500 text-white px-4 py-2 rounded"
-          >
-            Đăng ký
-          </button>
         </div>
       </div>
     </div>

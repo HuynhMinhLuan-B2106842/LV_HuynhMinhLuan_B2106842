@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 
 const TraCuuDangKy = () => {
   const [keyword, setKeyword] = useState('');
-  const [result, setResult] = useState(null);
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Hàm tra cứu đăng ký
   const handleSearch = async () => {
     if (!keyword.trim()) {
       alert('Vui lòng nhập email hoặc số điện thoại để tra cứu!');
@@ -14,14 +13,14 @@ const TraCuuDangKy = () => {
     }
 
     setLoading(true);
-    setResult(null);
+    setResults([]);
 
     try {
       const response = await fetch(`http://localhost:9000/api/dang-ky/tra-cuu?keyword=${encodeURIComponent(keyword)}`);
       const data = await response.json();
 
       if (response.ok) {
-        setResult(data.data);
+        setResults(data.data);
       } else {
         alert(data.message || 'Không tìm thấy thông tin đăng ký');
       }
@@ -41,39 +40,27 @@ const TraCuuDangKy = () => {
           placeholder="Nhập email hoặc số điện thoại"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
-          style={{
-            width: '100%',
-            padding: '10px',
-            fontSize: '16px',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
-            marginBottom: '10px',
-          }}
+          style={{ width: '100%', padding: '10px', fontSize: '16px', border: '1px solid #ddd', borderRadius: '4px', marginBottom: '10px' }}
         />
         <button
           onClick={handleSearch}
-          style={{
-            width: '100%',
-            padding: '10px',
-            fontSize: '16px',
-            backgroundColor: '#007BFF',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer',
-          }}
+          style={{ width: '100%', padding: '10px', fontSize: '16px', backgroundColor: '#007BFF', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
         >
           {loading ? 'Đang tìm...' : 'Tra cứu'}
         </button>
       </div>
-      {result && (
+      {results.length > 0 && (
         <div style={{ marginTop: '20px', border: '1px solid #ddd', borderRadius: '4px', padding: '20px' }}>
           <h2>Thông tin đăng ký:</h2>
-          <p><strong>Tên:</strong> {result.ten}</p>
-          <p><strong>Email:</strong> {result.email}</p>
-          <p><strong>Số điện thoại:</strong> {result.soDienThoai}</p>
-          <p><strong>Chương trình:</strong> {result.chuongTrinh?.tenChuongTrinh || 'Không xác định'}</p>
-          <p><strong>Trạng thái duyệt:</strong> {result.trangThaiDuyet}</p>
+          {results.map((result, index) => (
+            <div key={index} style={{ marginBottom: '15px', borderBottom: '1px solid #ddd', paddingBottom: '10px' }}>
+              <p><strong>Tên:</strong> {result.ten}</p>
+              <p><strong>Email:</strong> {result.email}</p>
+              <p><strong>Số điện thoại:</strong> {result.soDienThoai}</p>
+              <p><strong>Chương trình:</strong> {result.chuongTrinh?.tenChuongTrinh || 'Không xác định'}</p>
+              <p><strong>Trạng thái duyệt:</strong> {result.trangThaiDuyet}</p>
+            </div>
+          ))}
         </div>
       )}
     </div>

@@ -57,7 +57,7 @@ export default function NewsDetailPage() {
       <p className="date">{formatDate(newsDetail.ngay)}</p>
       <p className="short-description">{newsDetail.moTaChiTiet}</p> {/* Hiển thị mô tả ngắn */}
       <div className="content">
-        <p>{newsDetail.noiDung}</p> {/* Hiển thị nội dung chi tiết */}
+        <p className="mb-4 whitespace-pre-line">{newsDetail.noiDung}</p> {/* Hiển thị nội dung chi tiết */}
       </div>
 
       <style jsx>{`
@@ -73,24 +73,28 @@ export default function NewsDetailPage() {
           font-weight: bold;
           color: #333;
           margin-bottom: 10px;
+          text-align: justify;
         }
 
         .date {
           font-size: 1.1em;
           color: #888;
           margin-bottom: 20px;
+          text-align: justify;
         }
 
         .short-description {
           font-size: 1.1em;
           color: #666;
           margin-bottom: 20px;
+          text-align: justify;
         }
 
         .content {
           font-size: 1.2em;
           line-height: 1.6;
           color: #444;
+          text-align: justify;
         }
 
         .loading,

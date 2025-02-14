@@ -68,12 +68,12 @@ export default function Teachers() {
                 <img
                   src={teacher.hinhAnh ? `http://localhost:9000/uploads/${teacher.hinhAnh}` : '/placeholder.svg'}
                   alt={`Hình ảnh của giảng viên ${teacher.ten}`}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-64 object-contain"
                 />
                 <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">{teacher.ten}</h3>
                   <p>
-                    <strong>Chuyên môn:</strong> {teacher.chuyenMon}
+                    <strong>Chuyên môn:</strong> {teacher.chuyenNganh}
                   </p>
                   <p>
                     <strong>Kinh nghiệm:</strong> {teacher.kinhNghiem}

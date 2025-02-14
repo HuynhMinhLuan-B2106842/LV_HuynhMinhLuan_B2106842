@@ -248,7 +248,7 @@ export default function Teachers() {
             <img
               src={teacher.hinhAnh ? `http://localhost:9000/uploads/${teacher.hinhAnh}` : '/placeholder.svg'}
               alt={`Hình ảnh của giảng viên ${teacher.ten}`}
-              className="w-full h-48 object-cover"
+              className="w-full h-64 object-contain"
             />
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{teacher.ten}</h2>
@@ -257,6 +257,7 @@ export default function Teachers() {
               </p>
               <p>
                 <strong>Kinh nghiệm:</strong> {teacher.kinhNghiem}
+                 năm
               </p>
               <p>
                 <strong>Liên hệ:</strong> {teacher.lienHe}

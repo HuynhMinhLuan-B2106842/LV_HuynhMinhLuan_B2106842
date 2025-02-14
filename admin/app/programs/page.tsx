@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-
+import Link from 'next/link';
 const API_URL = "http://localhost:9000/api/chuong-trinh"
 const KHOA_API_URL = "http://localhost:9000/api/khoa"
 const GIANGVIEN_API_URL = "http://localhost:9000/api/giang-vien/khoa"
@@ -85,10 +85,16 @@ export default function Programs() {
     }
   }
 
-  const handleLecturerChange = (e) => {
-    const selectedLecturers = Array.from(e.target.selectedOptions, option => option.value)
-    setForm({ ...form, chiuTrachNhiemChinh: selectedLecturers })
-  }
+  const handleLecturerChange = (e, lecturerId) => {
+    const { checked } = e.target;
+    setForm((prevForm) => {
+      const newLecturers = checked
+        ? [...prevForm.chiuTrachNhiemChinh, lecturerId]
+        : prevForm.chiuTrachNhiemChinh.filter((id) => id !== lecturerId);
+      return { ...prevForm, chiuTrachNhiemChinh: newLecturers };
+    });
+  };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -245,7 +251,7 @@ export default function Programs() {
                 onChange={handleInputChange}
                 required
               />
-              <input
+              <textarea
                 type="text"
                 name="doiTuongVaSoLuong"
                 placeholder="Đối tượng và số lượng"
@@ -253,7 +259,7 @@ export default function Programs() {
                 value={form.doiTuongVaSoLuong}
                 onChange={handleInputChange}
                 required
-              />
+              ></textarea>
               <textarea
                 name="noiDungTapHuan"
                 placeholder="Nội dung tập huấn"
@@ -277,21 +283,25 @@ export default function Programs() {
                 ))}
               </select>
               {form.khoa && (
-                <select
-                  name="chiuTrachNhiemChinh"
-                  className="w-full p-2 border rounded mb-2"
-                  multiple
-                  value={form.chiuTrachNhiemChinh}
-                  onChange={handleLecturerChange}
-                  required
-                >
-                  {lecturers.map((lecturer) => (
-                    <option key={lecturer._id} value={lecturer._id}>
-                      {lecturer.ten}
-                    </option>
-                  ))}
-                </select>
-              )}
+  <div className="mb-4">
+    <p className="font-semibold mb-2">Giảng viên chịu trách nhiệm chính:</p>
+    <div className="flex flex-wrap">
+      {lecturers.map((lecturer) => (
+        <label key={lecturer._id} className="mr-4 mb-2">
+          <input
+            type="checkbox"
+            value={lecturer._id}
+            checked={form.chiuTrachNhiemChinh.includes(lecturer._id)}
+            onChange={(e) => handleLecturerChange(e, lecturer._id)}
+            className="mr-2"
+          />
+          {lecturer.ten}
+        </label>
+      ))}
+    </div>
+  </div>
+)}
+
               <div className="flex justify-between mt-4">
                 <button
                   type="submit"
@@ -363,12 +373,9 @@ export default function Programs() {
               <td className="px-4 py-2">{program.thoiDiemToChuc}</td>
               <td className="px-4 py-2">{program.doiTuongVaSoLuong}</td>
               <td className="px-4 py-2 flex space-x-2">
-                <button
-                  className="bg-yellow-500 text-white px-4 py-2 rounded"
-                  onClick={() => handleViewDetails(program)}
-                >
-                  Xem Chi Tiết
-                </button>
+              <Link href={`/programs/${program._id}`}>
+                <button className="bg-blue-500 text-white px-4 py-2 rounded">Xem Chi Tiết</button>
+              </Link>
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded"
                   onClick={() => handleEdit(program)}

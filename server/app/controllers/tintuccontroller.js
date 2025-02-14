@@ -47,3 +47,22 @@ exports.xoaTinTuc = async (req, res) => {
     res.status(500).json({ error: 'Không thể xóa tin tức' });
   }
 };
+// Cập nhật tin tức theo ID
+exports.capNhatTinTuc = async (req, res) => {
+  try {
+    const { tieuDe, moTaNgan, ngay, noiDung } = req.body;
+    const tinTucDaCapNhat = await TinTuc.findByIdAndUpdate(
+      req.params.id,
+      { tieuDe, moTaNgan, ngay, noiDung },
+      { new: true, runValidators: true }
+    );
+
+    if (!tinTucDaCapNhat) {
+      return res.status(404).json({ error: 'Không tìm thấy tin tức để cập nhật' });
+    }
+
+    res.status(200).json(tinTucDaCapNhat);
+  } catch (err) {
+    res.status(500).json({ error: 'Không thể cập nhật tin tức' });
+  }
+};
