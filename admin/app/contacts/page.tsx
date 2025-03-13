@@ -20,11 +20,12 @@ function extractIframeUrl(iframeString) {
   const match = iframeString.match(regex);
 
   if (match && match[1]) {
-    return match[1];
+    return match[1]; // Trả về URL nếu tìm thấy
   } else {
-    return null;
+    return iframeString; // Giữ nguyên giá trị nếu không tìm thấy URL
   }
 }
+
 
 export default function KhoaList() {
   const [khoaList, setKhoaList] = useState([]);

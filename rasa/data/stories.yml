@@ -1,0 +1,66 @@
+# version: "3.1"
+
+# stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+version: "3.1"
+stories:
+- story: Người dùng hỏi danh sách khóa học
+  steps:
+  - intent: ask_training_program
+  - action: utter_ask_training_program
+
+- story: Người dùng hỏi thời gian khóa học
+  steps:
+  - intent: ask_training_duration
+  - action: action_get_training_info
+
+- story: Người dùng hỏi thời điểm tổ chức
+  steps:
+  - intent: ask_training_schedule
+  - action: action_get_training_info
+
+- story: Người dùng hỏi đối tượng phù hợp
+  steps:
+  - intent: ask_training_audience
+  - action: action_get_training_info
+
+- story: Người dùng hỏi nội dung khóa học
+  steps:
+  - intent: ask_training_content
+  - action: action_get_training_info
+
+- story: Người dùng hỏi khoa tổ chức
+  steps:
+  - intent: ask_training_faculty
+  - action: action_get_training_info
+
+- story: Người dùng hỏi giảng viên
+  steps:
+  - intent: ask_training_instructor
+  - action: action_get_training_info

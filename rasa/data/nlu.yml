@@ -1,0 +1,252 @@
+# version: "3.1"
+
+# nlu:
+# - intent: greet
+#   examples: |
+#     - hey
+#     - hello
+#     - hi
+#     - hello there
+#     - good morning
+#     - good evening
+#     - moin
+#     - hey there
+#     - let's go
+#     - hey dude
+#     - goodmorning
+#     - goodevening
+#     - good afternoon
+
+# - intent: goodbye
+#   examples: |
+#     - cu
+#     - good by
+#     - cee you later
+#     - good night
+#     - bye
+#     - goodbye
+#     - have a nice day
+#     - see you around
+#     - bye bye
+#     - see you later
+
+# - intent: affirm
+#   examples: |
+#     - yes
+#     - y
+#     - indeed
+#     - of course
+#     - that sounds good
+#     - correct
+
+# - intent: deny
+#   examples: |
+#     - no
+#     - n
+#     - never
+#     - I don't think so
+#     - don't like that
+#     - no way
+#     - not really
+
+# - intent: mood_great
+#   examples: |
+#     - perfect
+#     - great
+#     - amazing
+#     - feeling like a king
+#     - wonderful
+#     - I am feeling very good
+#     - I am great
+#     - I am amazing
+#     - I am going to save the world
+#     - super stoked
+#     - extremely good
+#     - so so perfect
+#     - so good
+#     - so perfect
+
+# - intent: mood_unhappy
+#   examples: |
+#     - my day was horrible
+#     - I am sad
+#     - I don't feel very well
+#     - I am disappointed
+#     - super sad
+#     - I'm so sad
+#     - sad
+#     - very sad
+#     - unhappy
+#     - not good
+#     - not very good
+#     - extremly sad
+#     - so saad
+#     - so sad
+
+# - intent: bot_challenge
+#   examples: |
+#     - are you a bot?
+#     - are you a human?
+#     - am I talking to a bot?
+#     - am I talking to a human?
+version: "3.1"
+nlu:
+- intent: ask_training_program
+  examples: |
+    - Bạn có thể cho tôi biết về các chương trình tập huấn không?
+    - Có những khóa học nào đang mở?
+    - Tôi muốn xem danh sách các khóa đào tạo.
+
+- intent: ask_training_duration
+  examples: |
+    - Khóa học [Lập trình nhúng](Tên Chương Trình) kéo dài bao lâu?
+    - Tôi muốn biết thời gian của [An toàn điện](Tên Chương Trình).
+    - Chương trình [Thiết kế và phân tích thí nghiệm](Tên Chương Trình) có bao nhiêu buổi?
+    - [Khảo sát địa hình](Tên Chương Trình) mất bao lâu?
+    - [Kiểm thử phần mềm cơ bản](Tên Chương Trình) tốn bao thời gian?
+    - [SẢN XUẤT SẠCH HƠN](Tên Chương Trình)
+    - [Lập trình nhúng nâng cao](Tên Chương Trình)
+    -  [Thiết kế và phân tích thí nghiệm nâng cao](Tên Chương Trình)
+    -  [Sửa chữa và lắp đặt điện dân dụng](Tên Chương Trình)
+    -  [PLC nâng cao và truyền thông CC-Link](Tên Chương Trình)
+    -  [Lập trình PLC và HMI cơ bản](Tên Chương Trình)
+    -  [Tập huấn sử dụng phần mềm thiết kế 3D trong tính toán - thiết kế cơ khí](Tên Chương Trình)
+    -  [Tập huấn sử dụng phần mềm CAM trong lập trình gia công trên máy tiện CNC](Tên Chương Trình)
+    -  [Tập huấn sử dụng phần mềm CAM trong lập trình gia công trên máy phay CNC](Tên Chương Trình)
+    -  [Tập huấn vận hành máy CNC](Tên Chương Trình)
+    -  [Sản xuất sạch hơn](Tên Chương Trình)
+    -  [Tự động hóa và số hóa nhà máy](Tên Chương Trình)
+    -  [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là nhà quản lý)](Tên Chương Trình)
+    -  [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là kỹ sư thiết kế)](Tên Chương Trình)
+    -  [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là kỹ sư kết cấu)](Tên Chương Trình)
+    -  [Thiết kế web và lập trình front-end](Tên Chương Trình)
+    -  [Lập trình back-end với PHP và MySQL](Tên Chương Trình)
+    -  [Thiết kế giao diện (UI/UX) website bằng Figma](Tên Chương Trình)
+    -  [Quản trị mạng doanh nghiệp](Tên Chương Trình)
+    -  [Kiểm thử phần mềm tự động](Tên Chương Trình)
+    -  [Thiết kế đồ họa cho quảng cáo](Tên Chương Trình)
+    -  [Phát triển ứng dụng di động đa nền tảng với Flutter](Tên Chương Trình)
+    -  [Nhiếp ảnh số và xử lý ảnh hậu kỳ](Tên Chương Trình)
+    -  [Phát triển ứng dụng web với Laravel và AngularJS](Tên Chương Trình)
+    -  [Lập trình trí tuệ nhân tạo với Python](Tên Chương Trình)
+    -  [Phân tích và trực quan hóa dữ liệu với Python](Tên Chương Trình)
+    -  [STEAM - Phát triển tư duy với Python](Tên Chương Trình)
+    -  [STEAM - Thiết kế web sáng tạo](Tên Chương Trình)
+    -  [Phát triển tư duy với lập trình Arduino - Tinkercad](Tên Chương Trình)
+    -  [Chẩn đoán bệnh hại trên rau và các giải pháp bảo vệ thực vật thân thiện môi trường](Tên Chương Trình)
+    -  [Tận dụng nguồn phụ phẩm công nông nghiệp và ứng dụng gieo tinh nhân tạo nhằm nâng cao năng suất và hiệu quả kinh tế trong chăn nuôi thỏ](Tên Chương Trình)
+    -  [Ứng dụng công nghệ sinh học trong chọn giống lúa chất lượng cao](Tên Chương Trình)
+    -  [Giải pháp quản lý đất thông minh thích ứng biến đổi khí hậu](Tên Chương Trình)
+    -  [Công nghệ vi sinh vật bản địa (IMT) và ứng dụng trong hệ thống nông trại sinh học](Tên Chương Trình)
+    -  [Phương pháp đánh giá sức khỏe đất nông nghiệp](Tên Chương Trình)
+    -  [Giải pháp nâng cao sức khỏe đất vườn cây ăn trái](Tên Chương Trình)
+    -  [Kỹ thuật nuôi cấy mô và tế bào thực vật](Tên Chương Trình)
+    -  [Tập huấn nâng cao năng lực cho mạng lưới thú y cơ sở](Tên Chương Trình)
+    -  [Tập huấn quản lý chất lượng nước ao nuôi thủy sản](Tên Chương Trình)
+    -  [Phân loại một số tảo gây hại vùng nuôi trồng thủy sản](Tên Chương Trình)
+    -  [Phân loại động vật phiêu sinh vùng nuôi trồng thủy sản](Tên Chương Trình)
+    -  [Kỹ thuật phân tích các chỉ tiêu sinh lý động vật thủy sản](Tên Chương Trình)
+    -  [Tập huấn kỹ thuật phân tích vi sinh vật hữu ích trong nuôi trồng thủy sản](Tên Chương Trình)
+    -  [Kỹ thuật nuôi thức ăn tự nhiên](Tên Chương Trình)
+    -  [Tập huấn kỹ thuật phân tích chất lượng nước trong ao nuôi thủy sản](Tên Chương Trình)
+    -  [Quan trắc sinh học vùng nuôi trồng thủy sản](Tên Chương Trình)
+    -  [Kỹ thuật nuôi thủy sản nước ngọt](Tên Chương Trình)
+    -  [Sinh sản nhân tạo một trong những loài cá đông](Tên Chương Trình)
+    -  [Chẩn đoán các bệnh thường gặp trên cá tra](Tên Chương Trình)
+    -  [Chẩn đoán các bệnh thường gặp trên tôm](Tên Chương Trình)
+    -  [Phương pháp lập kháng sinh đồ và xác định MIC](Tên Chương Trình)
+    -  [Kỹ thuật xác định ký sinh trùng ở động vật thủy sản](Tên Chương Trình)
+    -  [Kỹ thuật nuôi và sử dụng Artemia trong nuôi trồng thủy sản](Tên Chương Trình)
+    -  [Sản xuất giống tôm biển chất lượng cao](Tên Chương Trình)
+    -  [Sản xuất giống tôm càng xanh chất lượng cao](Tên Chương Trình)
+    -  [Sản xuất giống và nuôi cua biển](Tên Chương Trình)
+    -  [Sản xuất giống và nuôi cá nước lợ, cá biển](Tên Chương Trình)
+    -  [Nuôi tôm công nghệ cao](Tên Chương Trình)
+    -  [Nuôi tôm sinh thái thân thiện với môi trường](Tên Chương Trình)
+    -  [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình)
+    -  [Xây dựng bản đồ đa dạng sinh học](Tên Chương Trình)
+    -  [Áp dụng hệ thống MRV trong hoạt động giảm nhẹ phát thải khí nhà kính](Tên Chương Trình)
+    -  [Quản lý rủi ro ngập lụt đô thị](Tên Chương Trình)
+    -  [Kỹ thuật chẩn đoán phân tử trong y học](Tên Chương Trình)
+    -  [Tin sinh học căn bản](Tên Chương Trình)
+    -  [Kỹ thuật nuôi trồng nấm ăn và nấm dược liệu](Tên Chương Trình)
+    -  [Nuôi cấy mô tế bào thực vật](Tên Chương Trình)
+    -  [Quy trình tạo giá thể sinh học và kỹ thuật trồng rau trong điều kiện nhà màng](Tên Chương Trình) 
+    -  [Nuôi cấy mô măng tây và kỹ thuật trồng măng tây trong điều kiện nhà màng](Tên Chương Trình)
+    -  [Tập huấn quy trình công nghệ sản xuất một số thức uống lên men](Tên Chương Trình)
+    -  [Kỹ thuật thu hoạch, sơ chế, bảo quản và chế biến một số loại nông sản ở đồng bằng sông Cửu Long](Tên Chương Trình)
+    -  [Tin sinh học căn bản](Tên Chương Trình)
+    -  [Kỹ thuật phân tích và đánh giá chất lượng thực phẩm](Tên Chương Trình)
+    -  [Kỹ thuật phân tích vi sinh vật gây hư hỏng và gây bệnh trên thực phẩm](Tên Chương Trình)
+    -  [Tập huấn kiến thức về an toàn và quản lý chất lượng thực phẩm](Tên Chương Trình)
+    -  [Tập huấn kỹ thuật đánh giá tính hiệu quả khi triển khai HACCP trong nhà máy chế biến thực phẩm](Tên Chương Trình)
+    -  [Python cho khoa học tự nhiên](Tên Chương Trình)
+    -  [Ứng dụng AI trong khoa học và giáo dục](Tên Chương Trình)
+    -  [Thiết kế vật liệu y sinh và bào chế dược phẩm có nguồn gốc thiên nhiên](Tên Chương Trình)
+    -  [Dược liệu và hợp chất tự nhiên ứng dụng trong phòng chống béo phì](Tên Chương Trình)
+    -  [Viết và công bố quốc tế trong lĩnh vực y sinh dược học](Tên Chương Trình)
+    -  [Phân tích dữ liệu định lượng trong giảng dạy ngoại ngữ](Tên Chương Trình)
+    -  [Phân tích dữ liệu định tính trong nghiên cứu dạy học ngoại ngữ](Tên Chương Trình)
+    -  [Thiết kế công cụ thu thập dữ liệu trong nghiên cứu khoa học xã hội và giáo dục](Tên Chương Trình)
+    -  [Tối ưu hóa hoạt động dạy và học ngoại ngữ thông qua ứng dụng công nghệ thông tin](Tên Chương Trình)
+    -  [Tổng quan tài liệu nghiên cứu về ngôn ngữ và giảng dạy ngoại ngữ](Tên Chương Trình)
+    -  [Đánh giá kết quả học tập dựa trên chuẩn đầu ra](Tên Chương Trình)
+    -  [Tập huấn phát triển du lịch nông nghiệp](Tên Chương Trình)
+    -  [Đào tạo kỹ năng thông tin](Tên Chương Trình)
+    -  [Quản trị văn phòng và văn thư lưu trữ](Tên Chương Trình)
+    -  [Nghiệp vụ thư viện](Tên Chương Trình)
+    -  [Kỹ năng viết tin và biên tập trang thông tin điện tử](Tên Chương Trình)
+    -  [Kỹ năng dẫn chương trình và phỏng vấn](Tên Chương Trình)
+    -  [Kỹ năng tổ chức sự kiện, quản lý dự án truyền thông và quản lý khủng hoảng truyền thông](Tên Chương Trình)
+    -  [Công tác xã hội](Tên Chương Trình)
+    -  [Thống kê ứng dụng trong khoa học xã hội](Tên Chương Trình)
+    -  [Tập huấn nghiệp vụ quản lý nhà hàng khách sạn](Tên Chương Trình)
+    -  [Tập huấn nghiệp vụ phục vụ nhà hàng](Tên Chương Trình)
+    -  [Tập huấn nghiệp vụ lễ tân khách sạn](Tên Chương Trình)
+    -  [Hướng dẫn áp dụng Luật Đất đai năm 2024](Tên Chương Trình)
+    -  [Hướng dẫn quy định của pháp luật về thực hành kinh doanh có trách nhiệm](Tên Chương Trình)
+    -  [Hướng dẫn quy định pháp luật về quyền sở hữu công nghiệp trong kinh doanh](Tên Chương Trình)
+    -  [Nâng cao kỹ năng của tổ khuyến nông cộng đồng trong xây dựng nông thôn mới](Tên Chương Trình)
+    -  [Lớp học kinh doanh cho nông dân](Tên Chương Trình)
+    -  [Nâng cao năng lực quản trị và điều hành hợp tác xã](Tên Chương Trình)
+    -  [Kĩ năng quản trị và lập kế hoạch kinh doanh](Tên Chương Trình)
+    -  [Nghiệp vụ đấu thầu cơ bản](Tên Chương Trình)
+    -  [Kỹ năng bán hàng và phục vụ khách hàng](Tên Chương Trình)
+    -  [Kỹ năng bán hàng thời chuyên đổi số](Tên Chương Trình)
+    -  [Quản lý hành chính - nhân sự](Tên Chương Trình)
+    -  [Quản lý kinh tế - tài chính](Tên Chương Trình)
+    -  [Giám đốc điều hành - CEO](Tên Chương Trình)
+    -  [Khởi nghiệp xanh ở vùng nông thôn (cơ bản)](Tên Chương Trình)
+    -  [Khởi nghiệp xanh ở vùng nông thôn (nâng cao)](Tên Chương Trình)
+    -  [Kinh tế nông nghiệp, tài nguyên thực phẩm và phát triển ở khu vực đồng bằng sông Cửu Long](Tên Chương Trình)
+    -  [Phát triển kinh doanh dịch vụ du lịch sinh thái](Tên Chương Trình)
+- intent: ask_training_schedule
+  examples: |
+    - Khi nào tổ chức lớp học [Lập trình nhúng](Tên Chương Trình)?
+    - Lịch học của [An toàn điện](Tên Chương Trình) là gì?
+    - Bao giờ có lớp học [Thiết kế và phân tích thí nghiệm](Tên Chương Trình)?
+
+- intent: ask_training_audience
+  examples: |
+    - Ai có thể tham gia lớp học [Lập trình nhúng](Tên Chương Trình)?
+    - [An toàn điện](Tên Chương Trình) dành cho ai?
+    - Tôi là sinh viên, có thể đăng ký chương trình này không?
+
+- intent: ask_training_content
+  examples: |
+    - Khóa học [Lập trình nhúng](Tên Chương Trình) dạy những gì?
+    - Nội dung chính của [An toàn điện](Tên Chương Trình) là gì?
+    - Tôi muốn biết các chủ đề trong [Thiết kế và phân tích thí nghiệm](Tên Chương Trình).
+
+- intent: ask_training_faculty
+  examples: |
+    - Khóa học [Lập trình nhúng](Tên Chương Trình) thuộc khoa nào?
+    - Khoa nào tổ chức chương trình [An toàn điện](Tên Chương Trình)?
+
+- intent: ask_training_instructor
+  examples: |
+    - Ai là giảng viên của khóa học [Lập trình nhúng](Tên Chương Trình)?
+    - Giảng viên nào dạy [An toàn điện](Tên Chương Trình)?
+- lookup: Tên Chương Trình
+  examples: |
+    data/lookup_table.txt

@@ -1,0 +1,20 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-Tên Chương Trình",
+      "2": "I-Tên Chương Trình",
+      "3": "L-Tên Chương Trình",
+      "4": "U-Tên Chương Trình",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-Tên Chương Trình": 1,
+      "I-Tên Chương Trình": 2,
+      "L-Tên Chương Trình": 3,
+      "U-Tên Chương Trình": 4,
+      "O": 0
+    },
+    "num_tags": 5
+  }
+]

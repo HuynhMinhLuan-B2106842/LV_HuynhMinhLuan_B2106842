@@ -1,0 +1,85 @@
+# version: "3.1"
+
+# intents:
+#   - greet
+#   - goodbye
+#   - affirm
+#   - deny
+#   - mood_great
+#   - mood_unhappy
+#   - bot_challenge
+
+# responses:
+#   utter_greet:
+#   - text: "Hey! How are you?"
+
+#   utter_cheer_up:
+#   - text: "Here is something to cheer you up:"
+#     image: "https://i.imgur.com/nGF1K8f.jpg"
+
+#   utter_did_that_help:
+#   - text: "Did that help you?"
+
+#   utter_happy:
+#   - text: "Great, carry on!"
+
+#   utter_goodbye:
+#   - text: "Bye"
+
+#   utter_iamabot:
+#   - text: "I am a bot, powered by Rasa."
+
+# session_config:
+#   session_expiration_time: 60
+#   carry_over_slots_to_new_session: true
+version: "3.1"
+
+intents:
+  - ask_training_program
+  - ask_training_duration
+  - ask_training_schedule
+  - ask_training_audience
+  - ask_training_content
+  - ask_training_faculty
+  - ask_training_instructor
+
+entities:
+  - Tên Chương Trình
+
+slots:
+  Tên Chương Trình:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: Tên Chương Trình
+
+responses:
+  utter_ask_training_program:
+    - text: "Các chương trình tập huấn hiện tại:\n
+        1. Lập trình nhúng - CTU.COE10\n
+        2. Lập trình nhúng nâng cao - CTU.COE12\n
+        3. Thiết kế và phân tích thí nghiệm - CTU.COE09\n
+        4. Thiết kế và phân tích thí nghiệm nâng cao - CTU.COE11\n
+        5. An toàn điện - CTU.COE01\n
+        Bạn quan tâm đến chương trình nào?"
+
+  utter_ask_training_duration:
+    - text: "Chương trình {Tên Chương Trình} có thời gian tập huấn là {Thời Gian Tập Huấn}."
+
+  utter_ask_training_schedule:
+    - text: "Khóa học {Tên Chương Trình} được tổ chức vào {Thời Điểm Tổ Chức}. Bạn có muốn đăng ký không?"
+
+  utter_ask_training_audience:
+    - text: "Chương trình {Tên Chương Trình} dành cho {Đối Tượng Và Số Lượng}."
+
+  utter_ask_training_content:
+    - text: "Nội dung chính của khóa học {Tên Chương Trình}:\n{Nội Dung Tập Huấn}"
+
+  utter_ask_training_faculty:
+    - text: "Khóa học {Tên Chương Trình} do {Khoa} tổ chức."
+
+  utter_ask_training_instructor:
+    - text: "Giảng viên chịu trách nhiệm giảng dạy {Tên Chương Trình}: {Giảng Viên Chịu Trách Nhiệm}."
+
+actions:
+  - action_get_training_info

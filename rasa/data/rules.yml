@@ -1,0 +1,49 @@
+# version: "3.1"
+
+# rules:
+
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+version: "3.1"
+rules:
+- rule: Trả lời danh sách chương trình tập huấn
+  steps:
+  - intent: ask_training_program
+  - action: utter_ask_training_program
+
+- rule: Trả lời thời gian tập huấn
+  steps:
+  - intent: ask_training_duration
+  - action: action_get_training_info
+
+- rule: Trả lời thời điểm tổ chức
+  steps:
+  - intent: ask_training_schedule
+  - action: action_get_training_info
+
+- rule: Trả lời đối tượng tham gia
+  steps:
+  - intent: ask_training_audience
+  - action: action_get_training_info
+
+- rule: Trả lời nội dung khóa học
+  steps:
+  - intent: ask_training_content
+  - action: action_get_training_info
+
+- rule: Trả lời khoa tổ chức
+  steps:
+  - intent: ask_training_faculty
+  - action: action_get_training_info
+
+- rule: Trả lời giảng viên phụ trách
+  steps:
+  - intent: ask_training_instructor
+  - action: action_get_training_info

@@ -2,9 +2,39 @@
 
 import { useState, useEffect } from "react"
 import Link from 'next/link';
+import * as XLSX from "xlsx";
 const API_URL = "http://localhost:9000/api/chuong-trinh"
 const KHOA_API_URL = "http://localhost:9000/api/khoa"
 const GIANGVIEN_API_URL = "http://localhost:9000/api/giang-vien/khoa"
+
+const exportToExcel = (programs) => {
+  // Dữ liệu cần xuất, bao gồm tên chương trình, khoa và giảng viên
+  const formattedPrograms = programs.map(program => {
+    return {
+      'id': program._id,
+      'Tên Chương Trình': program.tenChuongTrinh,
+      'Thời Gian Tập Huấn': program.thoiGianTapHuan,
+      'Thời Điểm Tổ Chức': program.thoiDiemToChuc,
+      'Đối Tượng Và Số Lượng': program.doiTuongVaSoLuong,
+      'Nội Dung Tập Huấn': program.noiDungTapHuan,
+      'Khoa': program.khoa ? program.khoa.ten : 'Chưa có',
+      'Giảng Viên Chịu Trách Nhiệm': program.chiuTrachNhiemChinh.length > 0
+        ? program.chiuTrachNhiemChinh.map(lecturer => lecturer.ten).join(', ')
+        : 'Chưa có'
+    };
+  });
+
+  // Tạo workbook và worksheet
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.json_to_sheet(formattedPrograms);
+
+  // Thêm worksheet vào workbook
+  XLSX.utils.book_append_sheet(wb, ws, "Chương Trình Tập Huấn");
+
+  // Xuất file Excel
+  XLSX.writeFile(wb, "programs.xlsx");
+};
+
 
 async function fetchPrograms() {
   const res = await fetch(API_URL, { cache: "no-store" })
@@ -139,7 +169,12 @@ export default function Programs() {
   }
 
   const handleEdit = async (program) => {
-    setForm(program)
+    setForm({
+      ...program,
+      khoa: program.khoa?._id || "", // Chỉ lấy ID của khoa
+      chiuTrachNhiemChinh: program.chiuTrachNhiemChinh.map(l => l._id), // Chuyển thành danh sách ID
+    });
+    
     setIsEditing(true)
     setShowForm(true)
 
@@ -213,10 +248,18 @@ export default function Programs() {
           Thêm Chương trình
         </button>
       </div>
+      <div className="mb-4">
+        <button
+          className="bg-yellow-500 text-white px-4 py-2 rounded mb-4"
+          onClick={() => exportToExcel(filteredPrograms)}
+        >
+          Xuất Excel
+        </button>
+      </div>
 
       {showForm && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded shadow-lg w-1/2">
+          <div className="bg-white p-6 rounded shadow-lg w-3/4 h-96 overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold">{isEditing ? "Sửa Chương trình" : "Thêm Chương trình"}</h2>
               <button className="text-gray-500" onClick={() => setShowForm(false)}>
