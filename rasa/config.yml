@@ -24,7 +24,7 @@ pipeline:
     constrain_similarities: true
   - name: EntitySynonymMapper
   - name: RegexEntityExtractor
-    use_lookup_tables: True  # Kích hoạt lookup table
+    use_lookup_tables: True  
     use_regexes: True
   - name: ResponseSelector
     epochs: 100
@@ -32,6 +32,37 @@ pipeline:
   - name: FallbackClassifier
     threshold: 0.3
     ambiguity_threshold: 0.1
+# pipeline:
+#   - name: "components.vietnamese_tokenizer.VietnameseTokenizer"
+#     intent_tokenization_flag: false  # Thêm dòng này
+#     case_sensitive: false           # Thêm dòng này
+#   - name: RegexFeaturizer
+#   - name: LexicalSyntacticFeaturizer
+#   - name: CountVectorsFeaturizer
+#   - name: CountVectorsFeaturizer
+#     analyzer: char_wb
+#     min_ngram: 1
+#     max_ngram: 4
+#   - name: DIETClassifier
+#     epochs: 100
+#     constrain_similarities: true
+#   - name: EntitySynonymMapper
+#   - name: RegexEntityExtractor
+#     use_lookup_tables: True
+#     use_regexes: True
+#   - name: ResponseSelector
+#     epochs: 100
+#     constrain_similarities: true
+#   - name: FallbackClassifier
+#     threshold: 0.3
+#     ambiguity_threshold: 0.1    
+# pipeline:
+#   - name: WhitespaceTokenizer
+#   - name: LanguageModelFeaturizer
+#     model_name: "bert"
+#     model_weights: "rasa/LaBSE"
+#   - name: DIETClassifier
+#     epochs: 100
 
 # # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
 # # If you'd like to customize it, uncomment and adjust the pipeline.

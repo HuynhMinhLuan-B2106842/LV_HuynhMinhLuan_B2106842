@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const API_URL = "http://localhost:9000/api/chuong-trinh";
-const KHOA_API_URL = "http://localhost:9000/api/khoa"; // API lấy danh sách khoa
+const KHOA_API_URL = "http://localhost:9000/api/khoa";
 
 async function fetchPrograms() {
   const res = await fetch(API_URL, { cache: "no-store" });
@@ -25,8 +25,8 @@ async function fetchKhoaList() {
 export default function ProgramList() {
   const [programs, setPrograms] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedKhoa, setSelectedKhoa] = useState(""); // Lưu trữ khoa được chọn
-  const [khoaList, setKhoaList] = useState([]); // Danh sách khoa
+  const [selectedKhoa, setSelectedKhoa] = useState("");
+  const [khoaList, setKhoaList] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
@@ -57,10 +57,6 @@ export default function ProgramList() {
     router.push(`/programs/${id}`);
   };
 
-  const handleAddProgram = () => {
-    router.push("/programs/new");
-  };
-
   const normalizeText = (text) => {
     return text
       .normalize("NFD")
@@ -70,12 +66,22 @@ export default function ProgramList() {
       .toLowerCase();
   };
 
-  // Lọc chương trình theo tên và khoa (không phân biệt dấu và chữ "d" với "đ")
   const filteredPrograms = programs.filter((program) => {
-    return (
-      normalizeText(program.tenChuongTrinh || "").includes(normalizeText(searchTerm)) &&
-      (selectedKhoa === "" || program.khoa?._id === selectedKhoa)
+    const fieldsToSearch = [
+      program.tenChuongTrinh,
+      program.thoiGianTapHuan,
+      program.thoiDiemToChuc,
+      program.doiTuongVaSoLuong,
+      program.noiDungTapHuan,
+      program.khoa?.ten,
+      ...(program.chiuTrachNhiemChinh || []).map(gv => gv.ten),
+    ];
+
+    const isMatch = fieldsToSearch.some((field) =>
+      field ? normalizeText(field).includes(normalizeText(searchTerm)) : false
     );
+
+    return isMatch && (selectedKhoa === "" || program.khoa?._id === selectedKhoa);
   });
 
   return (
@@ -93,7 +99,6 @@ export default function ProgramList() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
-        {/* Dropdown chọn khoa */}
         <select
           className="w-1/3 p-2 border rounded"
           value={selectedKhoa}

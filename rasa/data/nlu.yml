@@ -96,34 +96,43 @@ nlu:
     - Bạn có thể cho tôi biết về các chương trình tập huấn không?
     - Có những khóa học nào đang mở?
     - Tôi muốn xem danh sách các khóa đào tạo.
-
+    - Bạn có thể chia sẻ thông tin về các chương trình huấn luyện không?
+    - Tôi muốn biết về các khóa học hiện có.
+    - Có thể cung cấp cho tôi thông tin về các chương trình đào tạo không?
+    - Bạn có thể giới thiệu một số khóa học cho tôi không?
+    - Tôi muốn tìm hiểu về các khóa huấn luyện có sẵn.
+    - Các chương trình tập huấn hiện tại là gì?
+    - Bạn có thể cho tôi biết các khóa học đang mở không?
+    - Tôi cần xem danh sách các khóa đào tạo có sẵn.
+    - Bạn có thông tin về các chương trình đào tạo không?
+    - Tôi muốn hỏi về các chương trình huấn luyện sắp tới.
 - intent: ask_training_duration
   examples: |
     - Khóa học [Lập trình nhúng](Tên Chương Trình) kéo dài bao lâu?
     - Tôi muốn biết thời gian của [An toàn điện](Tên Chương Trình).
     - Chương trình [Thiết kế và phân tích thí nghiệm](Tên Chương Trình) có bao nhiêu buổi?
-    - [Khảo sát địa hình](Tên Chương Trình) mất bao lâu?
-    - [Kiểm thử phần mềm cơ bản](Tên Chương Trình) tốn bao thời gian?
-    - [SẢN XUẤT SẠCH HƠN](Tên Chương Trình)
-    - [Lập trình nhúng nâng cao](Tên Chương Trình)
-    -  [Thiết kế và phân tích thí nghiệm nâng cao](Tên Chương Trình)
-    -  [Sửa chữa và lắp đặt điện dân dụng](Tên Chương Trình)
-    -  [PLC nâng cao và truyền thông CC-Link](Tên Chương Trình)
-    -  [Lập trình PLC và HMI cơ bản](Tên Chương Trình)
-    -  [Tập huấn sử dụng phần mềm thiết kế 3D trong tính toán - thiết kế cơ khí](Tên Chương Trình)
-    -  [Tập huấn sử dụng phần mềm CAM trong lập trình gia công trên máy tiện CNC](Tên Chương Trình)
-    -  [Tập huấn sử dụng phần mềm CAM trong lập trình gia công trên máy phay CNC](Tên Chương Trình)
-    -  [Tập huấn vận hành máy CNC](Tên Chương Trình)
-    -  [Sản xuất sạch hơn](Tên Chương Trình)
-    -  [Tự động hóa và số hóa nhà máy](Tên Chương Trình)
-    -  [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là nhà quản lý)](Tên Chương Trình)
-    -  [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là kỹ sư thiết kế)](Tên Chương Trình)
-    -  [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là kỹ sư kết cấu)](Tên Chương Trình)
-    -  [Thiết kế web và lập trình front-end](Tên Chương Trình)
-    -  [Lập trình back-end với PHP và MySQL](Tên Chương Trình)
-    -  [Thiết kế giao diện (UI/UX) website bằng Figma](Tên Chương Trình)
-    -  [Quản trị mạng doanh nghiệp](Tên Chương Trình)
-    -  [Kiểm thử phần mềm tự động](Tên Chương Trình)
+    -  [Khảo sát địa hình](Tên Chương Trình) mất bao lâu?
+    -  [Kiểm thử phần mềm cơ bản](Tên Chương Trình) tốn bao thời gian?
+    -  Em muốn biết khóa học [SẢN XUẤT SẠCH HƠN](Tên Chương Trình)  ày?
+    -  Mất bao lâu để hoàn thành chương trình [Lập trình nhúng nâng cao](Tên Chương Trình)
+    -  Chương trình [Thiết kế và phân tích thí nghiệm nâng cao](Tên Chương Trình) kéo dài trong bao nhiêu tuần? 
+    -  Khóa học [Sửa chữa và lắp đặt điện dân dụng](Tên Chương Trình) tốn bao lâu để học xong?
+    -  Cần tham gia bao lâu để hoàn thành [PLC nâng cao và truyền thông CC-Link](Tên Chương Trình)
+    -  Chương trình [Lập trình PLC và HMI cơ bản](Tên Chương Trình) sẽ kéo dài bao nhiêu giờ học?
+    -  Khóa học [Tập huấn sử dụng phần mềm thiết kế 3D trong tính toán - thiết kế cơ khí](Tên Chương Trình) có thời gian học cụ thể như thế nào?
+    -  Chương trình [Tập huấn sử dụng phần mềm CAM trong lập trình gia công trên máy tiện CNC](Tên Chương Trình) cần bao nhiêu thời gian để hoàn thành?
+    -  Thời gian khóa học [Tập huấn sử dụng phần mềm CAM trong lập trình gia công trên máy phay CNC](Tên Chương Trình) là bao lâu?
+    -  Khóa học [Tập huấn vận hành máy CNC](Tên Chương Trình) sẽ kéo dài bao nhiêu buổi?
+    -  Chương trình [Sản xuất sạch hơn](Tên Chương Trình) có thời gian học là bao nhiêu?
+    -  Khóa học [Tự động hóa và số hóa nhà máy](Tên Chương Trình)  sẽ kéo dài bao nhiêu tuần?
+    -  Chương trình [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là nhà quản lý)](Tên Chương Trình) mất bao lâu để hoàn thành? 
+    -  Thời gian tham gia khóa học [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là kỹ sư thiết kế)](Tên Chương Trình) là bao nhiêu?
+    -  Khóa học [Công nghệ BIM và ứng dụng thực tiễn (dành cho đối tượng là kỹ sư kết cấu)](Tên Chương Trình) có bao nhiêu buổi học?
+    -  Chương trình [Thiết kế web và lập trình front-end](Tên Chương Trình) sẽ tốn bao nhiêu thời gian?
+    -  Khóa học [Lập trình back-end với PHP và MySQL](Tên Chương Trình) kéo dài trong bao nhiêu giờ? 
+    -  Em muốn biết thời gian của chương trình [Thiết kế giao diện (UI/UX) website bằng Figma](Tên Chương Trình) là bao lâu? 
+    -  Tui muốn biết [Quản trị mạng doanh nghiệp](Tên Chương Trình) có thời gian như thế nào?
+    -  Tui muốn biết cần bao lâu để hoàn thành [Kiểm thử phần mềm tự động](Tên Chương Trình)
     -  [Thiết kế đồ họa cho quảng cáo](Tên Chương Trình)
     -  [Phát triển ứng dụng di động đa nền tảng với Flutter](Tên Chương Trình)
     -  [Nhiếp ảnh số và xử lý ảnh hậu kỳ](Tên Chương Trình)
@@ -164,11 +173,11 @@ nlu:
     -  [Nuôi tôm công nghệ cao](Tên Chương Trình)
     -  [Nuôi tôm sinh thái thân thiện với môi trường](Tên Chương Trình)
     -  [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình)
-    -  [Xây dựng bản đồ đa dạng sinh học](Tên Chương Trình)
+    -  [XÂY DỰNG BẢN ĐỒ (ĐA DẠNG SINH HỌC, HỆ SINH THÁI, THỦY VĂN, DỊCH VỤ HỆ SINH THÁI,...)](Tên Chương Trình)
     -  [Áp dụng hệ thống MRV trong hoạt động giảm nhẹ phát thải khí nhà kính](Tên Chương Trình)
-    -  [Quản lý rủi ro ngập lụt đô thị](Tên Chương Trình)
+    -  [QUẢN LÝ RỦI RO NGẬP LỤT ĐÔ THỊ VÀ CÁC GIẢI PHÁP DỰA VÀO TỰ NHIÊN (NBS)](Tên Chương Trình)
     -  [Kỹ thuật chẩn đoán phân tử trong y học](Tên Chương Trình)
-    -  [Tin sinh học căn bản](Tên Chương Trình)
+    -  [KỸ THUẬT SINH HỌC PHÂN TỬ CĂN BẢN](Tên Chương Trình)
     -  [Kỹ thuật nuôi trồng nấm ăn và nấm dược liệu](Tên Chương Trình)
     -  [Nuôi cấy mô tế bào thực vật](Tên Chương Trình)
     -  [Quy trình tạo giá thể sinh học và kỹ thuật trồng rau trong điều kiện nhà màng](Tên Chương Trình) 
@@ -215,7 +224,7 @@ nlu:
     -  [Kỹ năng bán hàng thời chuyên đổi số](Tên Chương Trình)
     -  [Quản lý hành chính - nhân sự](Tên Chương Trình)
     -  [Quản lý kinh tế - tài chính](Tên Chương Trình)
-    -  [Giám đốc điều hành - CEO](Tên Chương Trình)
+    -  Khóa học [Giám đốc điều hành - CEO](Tên Chương Trình) diễn ra trong bao lâu?
     -  [Khởi nghiệp xanh ở vùng nông thôn (cơ bản)](Tên Chương Trình)
     -  [Khởi nghiệp xanh ở vùng nông thôn (nâng cao)](Tên Chương Trình)
     -  [Kinh tế nông nghiệp, tài nguyên thực phẩm và phát triển ở khu vực đồng bằng sông Cửu Long](Tên Chương Trình)
@@ -225,28 +234,246 @@ nlu:
     - Khi nào tổ chức lớp học [Lập trình nhúng](Tên Chương Trình)?
     - Lịch học của [An toàn điện](Tên Chương Trình) là gì?
     - Bao giờ có lớp học [Thiết kế và phân tích thí nghiệm](Tên Chương Trình)?
+    - Khi nào lớp học [Thiết kế đồ họa cho quảng cáo](Tên Chương Trình) được tổ chức?
+    - Lịch khai giảng của khóa học [Phát triển ứng dụng di động đa nền tảng với Flutter](Tên Chương Trình) là khi nào?
+    - Lớp học [Nhiếp ảnh số và xử lý ảnh hậu kỳ](Tên Chương Trình) sẽ bắt đầu vào thời gian nào?
+    - Khóa học [Phát triển ứng dụng web với Laravel và AngularJS](Tên Chương Trình) sẽ diễn ra vào lúc nào?
+    - Khi nào lớp [Lập trình trí tuệ nhân tạo với Python](Tên Chương Trình) được tổ chức?
+    - Khi nào khóa học [STEAM - Phát triển tư duy với Python](Tên Chương Trình) được tổ chức?
+    - Chương trình [STEAM - Thiết kế web sáng tạo](Tên Chương Trình) sẽ bắt đầu vào thời gian nào?
+    - Khi nào lớp [Phát triển tư duy với lập trình Arduino - Tinkercad](Tên Chương Trình) khai giảng?
+    - Lớp học [Chẩn đoán bệnh hại trên rau và các giải pháp bảo vệ thực vật thân thiện môi trường](Tên Chương Trình) sẽ diễn ra vào khi nào?
+    - Khóa học [Tận dụng nguồn phụ phẩm công nông nghiệp và ứng dụng gieo tinh nhân tạo nhằm nâng cao năng suất và hiệu quả kinh tế trong chăn nuôi thỏ](Tên Chương Trình) sẽ bắt đầu vào thời gian nào?
+    - Khi nào lớp [Ứng dụng công nghệ sinh học trong chọn giống lúa chất lượng cao](Tên Chương Trình) bắt đâu?
+    - Lịch học của chương trình [Giải pháp quản lý đất thông minh thích ứng biến đổi khí hậu](Tên Chương Trình) là khi nào?
+    - Khi nào [Công nghệ vi sinh vật bản địa (IMT) và ứng dụng trong hệ thống nông trại sinh học](Tên Chương Trình) khai giảng?
+    - Lớp học [Phương pháp đánh giá sức khỏe đất nông nghiệp](Tên Chương Trình) sẽ bắt đầu vào lúc nào?
+    - Khi nào chương trình [Giải pháp nâng cao sức khỏe đất vườn cây ăn trái](Tên Chương Trình) tổ chức?
+    - Khóa học [Kỹ thuật nuôi cấy mô và tế bào thực vật](Tên Chương Trình) sẽ diễn ra vào lúc nào?
+    - Thời điểm tổ chức [Tập huấn nâng cao năng lực cho mạng lưới thú y cơ sở](Tên Chương Trình)
+    - Còn thời điểm tổ chức [Tập huấn quản lý chất lượng nước ao nuôi thủy sản](Tên Chương Trình)
+    - Cho tui biết thời điểm tổ chức [Phân loại một số tảo gây hại vùng nuôi trồng thủy sản](Tên Chương Trình)
+    - thời điểm [Tập huấn quản lý chất lượng nước ao nuôi thủy sản](Tên Chương Trình) là khi nào
+
 
 - intent: ask_training_audience
   examples: |
     - Ai có thể tham gia lớp học [Lập trình nhúng](Tên Chương Trình)?
     - [An toàn điện](Tên Chương Trình) dành cho ai?
     - Tôi là sinh viên, có thể đăng ký chương trình này không?
+    - Lớp học [Phân loại động vật phiêu sinh vùng nuôi trồng thủy sản](Tên Chương Trình) phù hợp với đối tượng nào?
+    - Số lượng của khóa học [Kỹ thuật phân tích các chỉ tiêu sinh lý động vật thủy sản](Tên Chương Trình) 
+    - Ai có thể tham gia khóa học [Tập huấn kỹ thuật phân tích vi sinh vật hữu ích trong nuôi trồng thủy sản](Tên Chương Trình)?
+    - đối tượng nào phù hợp với [Kỹ thuật nuôi thức ăn tự nhiên](Tên Chương Trình) 
+    - Số lượng [Tập huấn kỹ thuật phân tích chất lượng nước trong ao nuôi thủy sản](Tên Chương Trình) 
+    - Ai có thể tham gia chương trình [Quan trắc sinh học vùng nuôi trồng thủy sản](Tên Chương Trình)?
+    - Khóa học [Kỹ thuật nuôi thủy sản nước ngọt](Tên Chương Trình) phù hợp với ai?
+    - Tôi có thể tham gia khóa học [Sinh sản nhân tạo một trong những loài cá đông](Tên Chương Trình) nếu tôi là ngư dân không?
+    - đối tượng phù hợp với Khóa học [Chẩn đoán các bệnh thường gặp trên cá tra](Tên Chương Trình) là ai
+    - Ai có thể tham gia [Chẩn đoán các bệnh thường gặp trên tôm](Tên Chương Trình)?
+    - đối tượng nào phù hợp với khóa học [Phương pháp lập kháng sinh đồ và xác định MIC](Tên Chương Trình)
+    - Lớp học [Kỹ thuật xác định ký sinh trùng ở động vật thủy sản](Tên Chương Trình) dành cho đối tượng nào?
+    - Ai được tham gia khóa học [Kỹ thuật nuôi và sử dụng Artemia trong nuôi trồng thủy sản](Tên Chương Trình)?
+    - đối tượng phù hợp với [Sản xuất giống tôm biển chất lượng cao](Tên Chương Trình) là ai
+    - Ai được tham gia [Sản xuất giống tôm càng xanh chất lượng cao](Tên Chương Trình)?
+    - Lớp học [Sản xuất giống và nuôi cua biển](Tên Chương Trình) dành cho ai?
+    - Khóa học [Sản xuất giống và nuôi cá nước lợ, cá biển](Tên Chương Trình) có số lượng bao nhiêu
+    - Tôi có thể tham gia chương trình [Nuôi tôm công nghệ cao](Tên Chương Trình) nếu tôi chưa có kinh nghiệm không?
+    - Ai là đối tượng phù hợp với khóa học [Nuôi tôm sinh thái thân thiện với môi trường](Tên Chương Trình)?
+    - Khóa học [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình) dành cho ai?
+    - [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình) dành cho đối tượng nào?
+    - Đối tượng có thể tham gia [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình)
+    - Đối tượng tập huấn [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình) là ai
+    - Đối tượng nào có thể tập huấn [Kỹ thuật nuôi cá luân canh trên ruộng lúa](Tên Chương Trình) là ai
+
 
 - intent: ask_training_content
   examples: |
     - Khóa học [Lập trình nhúng](Tên Chương Trình) dạy những gì?
     - Nội dung chính của [An toàn điện](Tên Chương Trình) là gì?
     - Tôi muốn biết các chủ đề trong [Thiết kế và phân tích thí nghiệm](Tên Chương Trình).
+    - Khóa học [XÂY DỰNG BẢN ĐỒ (ĐA DẠNG SINH HỌC, HỆ SINH THÁI, THỦY VĂN, DỊCH VỤ HỆ SINH THÁI,...)](Tên Chương Trình) dạy gì?
+    - Nội dung chính của khóa học [Áp dụng hệ thống MRV trong hoạt động giảm nhẹ phát thải khí nhà kính](Tên Chương Trình) là gì?
+    - Khóa học [QUẢN LÝ RỦI RO NGẬP LỤT ĐÔ THỊ VÀ CÁC GIẢI PHÁP DỰA VÀO TỰ NHIÊN (NBS)](Tên Chương Trình) sẽ bao gồm những gì?
+    - Nội dung của khóa học [Kỹ thuật chẩn đoán phân tử trong y học](Tên Chương Trình) như thế nào?
+    - Khóa học [KỸ THUẬT SINH HỌC PHÂN TỬ CĂN BẢN](Tên Chương Trình) sẽ dạy những kiến thức gì?
+    - Khóa học [Kỹ thuật nuôi trồng nấm ăn và nấm dược liệu](Tên Chương Trình) có những bài học nào?
+    - Nội dung chính trong chương trình [Nuôi cấy mô tế bào thực vật](Tên Chương Trình) là gì?
+    - Chương trình [Quy trình tạo giá thể sinh học và kỹ thuật trồng rau trong điều kiện nhà màng](Tên Chương Trình) sẽ dạy về những vấn đề gì?
+    - Khóa học [Nuôi cấy mô măng tây và kỹ thuật trồng măng tây trong điều kiện nhà màng](Tên Chương Trình) sẽ giảng dạy những kỹ thuật nào?
+    - Nội dung khóa học [Tập huấn quy trình công nghệ sản xuất một số thức uống lên men](Tên Chương Trình) là gì?
+    - Khóa học [Kỹ thuật thu hoạch, sơ chế, bảo quản và chế biến một số loại nông sản ở đồng bằng sông Cửu Long](Tên Chương Trình) sẽ bao gồm các chủ đề gì?
+    - Chương trình [Tin sinh học căn bản](Tên Chương Trình) sẽ dạy những gì?
+    - Nội dung của khóa học [Kỹ thuật phân tích và đánh giá chất lượng thực phẩm](Tên Chương Trình) như thế nào?
+    - Khóa học [Kỹ thuật phân tích vi sinh vật gây hư hỏng và gây bệnh trên thực phẩm](Tên Chương Trình) dạy những gì?
+    - Khóa học [Tập huấn kiến thức về an toàn và quản lý chất lượng thực phẩm](Tên Chương Trình) có những bài học gì?
+    - Nội dung [Tập huấn kỹ thuật đánh giá tính hiệu quả khi triển khai HACCP trong nhà máy chế biến thực phẩm](Tên Chương Trình) là gì?
+    - Khóa học [Python cho khoa học tự nhiên](Tên Chương Trình) sẽ giảng dạy những kỹ thuật nào?
+    - Nội dung [Ứng dụng AI trong khoa học và giáo dục](Tên Chương Trình)
+    - Khóa học [Thiết kế vật liệu y sinh và bào chế dược phẩm có nguồn gốc thiên nhiên](Tên Chương Trình) dạy về những vấn đề gì?
+    - Chương trình [Dược liệu và hợp chất tự nhiên ứng dụng trong phòng chống béo phì](Tên Chương Trình) sẽ giảng dạy về những chủ đề nào?
+    - Nội dung tập huấn [Ứng dụng AI trong khoa học và giáo dục](Tên Chương Trình)
+    - Nội dung tập huấn của [Ứng dụng AI trong khoa học và giáo dục](Tên Chương Trình) là gì?
+    - Nội dung tập huấn [Ứng dụng AI trong khoa học và giáo dục](Tên Chương Trình) bao gồm những gì?
 
 - intent: ask_training_faculty
   examples: |
     - Khóa học [Lập trình nhúng](Tên Chương Trình) thuộc khoa nào?
     - Khoa nào tổ chức chương trình [An toàn điện](Tên Chương Trình)?
+    - [Viết và công bố quốc tế trong lĩnh vực y sinh dược học](Tên Chương Trình) thuộc khoa nào?
+    - Chương trình [Phân tích dữ liệu định lượng trong giảng dạy ngoại ngữ](Tên Chương Trình) do khoa nào tổ chức?
+    - Khóa học [Phân tích dữ liệu định tính trong nghiên cứu dạy học ngoại ngữ](Tên Chương Trình) của khoa nào?
+    - [Thiết kế công cụ thu thập dữ liệu trong nghiên cứu khoa học xã hội và giáo dục](Tên Chương Trình) được khoa nào đảm nhận?
+    - Chương trình [Tối ưu hóa hoạt động dạy và học ngoại ngữ thông qua ứng dụng công nghệ thông tin](Tên Chương Trình) được khoa nào tổ chức?
+    - Khóa học [Tổng quan tài liệu nghiên cứu về ngôn ngữ và giảng dạy ngoại ngữ](Tên Chương Trình) thuộc khoa nào?
+    - khóa học [Đánh giá kết quả học tập dựa trên chuẩn đầu ra](Tên Chương Trình) được khoa nào đảm nhận?
+    - [Tập huấn phát triển du lịch nông nghiệp](Tên Chương Trình) của khoa nào?
+    - Khóa học [Đào tạo kỹ năng thông tin](Tên Chương Trình) do khoa nào tổ chức?
+    - chương trình [Quản trị văn phòng và văn thư lưu trữ](Tên Chương Trình) được khoa nào đảm nhận?
+    - Khóa học [Nghiệp vụ thư viện](Tên Chương Trình) được khoa nào tổ chức?
+    - [Kỹ năng viết tin và biên tập trang thông tin điện tử](Tên Chương Trình) được khoa nào tổ chức?
+    - Khoa nào đứng ra tổ chức tổ chức khóa học [Kỹ năng dẫn chương trình và phỏng vấn](Tên Chương Trình)?
+    - Chương trình [Kỹ năng tổ chức sự kiện, quản lý dự án truyền thông và quản lý khủng hoảng truyền thông](Tên Chương Trình) do khoa nào tổ chức?
+    - khoa nào dạy [Công tác xã hội](Tên Chương Trình)?
+    - Khoa nào đứng ra tổ chức chương trình [Thống kê ứng dụng trong khoa học xã hội](Tên Chương Trình)?
+    - khoa nào giảng dạy [Tập huấn nghiệp vụ quản lý nhà hàng khách sạn](Tên Chương Trình)
+    - khoa nào tập huấn [Tập huấn nghiệp vụ phục vụ nhà hàng](Tên Chương Trình)
+    - Khóa học [Tập huấn nghiệp vụ lễ tân khách sạn](Tên Chương Trình) được khoa nào tổ chức?
+    - Khoa nào phụ trách khóa học [Hướng dẫn áp dụng Luật Đất đai năm 2024](Tên Chương Trình)?
+
 
 - intent: ask_training_instructor
   examples: |
     - Ai là giảng viên của khóa học [Lập trình nhúng](Tên Chương Trình)?
     - Giảng viên nào dạy [An toàn điện](Tên Chương Trình)?
+    - [TẬP HUẤN KỸ THUẬT ĐÁNH GIÁ CHẤT LƯỢNG TINH TRÙNG ĐỘNG VẬ](Tên Chương Trình) ai chịu trách nhiệm chính?
+    - Giảng viên nào dạy chương trình [Hướng dẫn quy định của pháp luật về thực hành kinh doanh có trách nhiệm](Tên Chương Trình)?
+    - Ai là người phụ trách khóa học [Hướng dẫn quy định pháp luật về quyền sở hữu công nghiệp trong kinh doanh](Tên Chương Trình)?
+    - Khóa học [Nâng cao kỹ năng của tổ khuyến nông cộng đồng trong xây dựng nông thôn mới](Tên Chương Trình) do giảng viên nào giảng dạy?
+    - Người chịu trách nhiệm chính [Lớp học kinh doanh cho nông dân](Tên Chương Trình) là ai?
+    - Giảng viên nào chịu trách nhiệm khóa học [Nâng cao năng lực quản trị và điều hành hợp tác xã](Tên Chương Trình)?
+    - Ai dạy chương trình [Kĩ năng quản trị và lập kế hoạch kinh doanh](Tên Chương Trình)?
+    - Giảng viên nào tổ chức khóa học [Nghiệp vụ đấu thầu cơ bản](Tên Chương Trình)?
+    - Khóa học [Kỹ năng bán hàng và phục vụ khách hàng](Tên Chương Trình) do ai giảng dạy?
+    - Ai là giảng viên của chương trình [Kỹ năng bán hàng thời chuyên đổi số](Tên Chương Trình)?
+    - Giảng viên nào chịu trách nhiệm giảng dạy khóa học [Quản lý hành chính - nhân sự](Tên Chương Trình)?
+    - Ai phụ trách [Quản lý kinh tế - tài chính](Tên Chương Trình)?
+    - Khóa học [Giám đốc điều hành - CEO](Tên Chương Trình) do giảng viên nào tổ chức?
+    - Ai là người giảng dạy chương trình [Khởi nghiệp xanh ở vùng nông thôn (cơ bản)](Tên Chương Trình)?
+    - Giảng viên nào phụ trách khóa học [Khởi nghiệp xanh ở vùng nông thôn (nâng cao)](Tên Chương Trình)?
+    - Người nào chịu trách nhiệm chính [Kinh tế nông nghiệp, tài nguyên thực phẩm và phát triển ở khu vực đồng bằng sông Cửu Long](Tên Chương Trình)?
+    - Giảng viên nào dạy khóa học [Phát triển kinh doanh dịch vụ du lịch sinh thái](Tên Chương Trình)?
+    - Ai chịu trách nhiệm chính [Người nuôi tôm chuyên nghiệp](Tên Chương Trình)?
+    - Giảng viên nào chịu trách nhiệm chính khóa học [Nuôi tôm sinh thái thân thiện với môi trường](Tên Chương Trình)?
+    - Ai là giảng viên của khóa học [Sản xuất giống và nuôi một số loài động vật thân mềm có giá trị cao](Tên Chương Trình)?
+    - Khóa học [Kỹ thuật trồng và sử dụng rong biển](Tên Chương Trình) do ai chịu trách nhiệm chính?
+    - chịu trách nhiệm chính của [Công nghệ chế biến sản phẩm tôm thẻ chân trắng tẩm gia vị sấy](Tên Chương Trình)?
+    - Ai giảng dạy chương trình [Phương pháp thu và phân tích nguồn lợi thủy sản](Tên Chương Trình)?
+    - Khóa học [Phương pháp đánh giá trữ lượng và quản lý nghề cá](Tên Chương Trình) do giảng viên nào chịu trách nhiệm chính?
+    - Giảng viên nào chịu trách nhiệm khóa học [Dinh dưỡng và thức ăn thủy sản](Tên Chương Trình)?
+    - chịu trách nhiệm chính cùa [Kỹ thuật phân tích DNA ty thể trong định danh các loài thủy sản](Tên Chương Trình) là ai?
+    - Khóa học [Kỹ thuật nuôi cá chốt trâu](Tên Chương Trình) ai chịu trách nhiệm chính?
+    - Ai chịu trách nhiệm chính của chương trình [Đánh giá và lượng hóa dịch vụ hệ sinh thái](Tên Chương Trình)?
+    - Giảng viên nào tổ chức khóa học [Than sinh học: Đặc tính lý hóa, phương pháp tạo và ứng dụng](Tên Chương Trình)?
+- intent: ask_training_sessions
+  examples: |
+    - Có chương trình tập huấn [2 buổi](session_count) không?
+    - Tôi muốn tìm các khóa học [3 buổi](session_count).
+    - Các khóa học có [10 buổi](session_count) là gì?
+    - Tôi có thể tham gia chương trình tập huấn [48 giờ](session_count) không?
+    - Bạn có thể gợi ý những khóa học [40 giờ](session_count) không?
+    - Các khóa học kéo dài [110 giờ](session_count) có gì đặc biệt?
+    - Có khóa học nào diễn ra trong [4 tháng](session_count) không?
+    - Tôi muốn tìm những khóa học kéo dài [3 tháng](session_count), bạn có biết không?
+    - Khóa học nào có [20 tiết](session_count) vậy?
+    - Bạn có thể giới thiệu các chương trình tập huấn [30 tiết](session_count) không?
+    - Chương trình tập huấn kéo dài [15 ngày](session_count) có sẵn không?
+    - Những khóa học nào kéo dài [5 ngày](session_count)?
+    - Các khóa học có thời gian [60 giờ](session_count) sẽ như thế nào?
+    - Có khóa học nào trong [2 tháng](session_count) không?
+    - Tìm giúp tôi các khóa học kéo dài [75 tiết](session_count).
+    - Mình có thể tham gia chương trình [6 buổi](session_count) không?
+    - Các khóa học có [3 tháng](session_count) học liệu ra sao?
+    - Bạn có khóa học nào có [90 tiết](session_count) không?
+    - Các khóa học kéo dài [20 ngày](session_count) thường học những gì?
+- intent: ask_training_by_faculty
+  examples: |
+    - Các chương trình thuộc khoa [Trường Bách Khoa](Khoa) là gì?
+    - Cho tôi danh sách khóa học của khoa [Trường Kinh tế](Khoa).
+    - Tôi muốn biết tất cả khóa học do khoa [Trường Nông Nghiệp](Khoa) tổ chức.
+    - Khoa [Trường Công Nghệ Thông Tin và Truyền Thông](Khoa) có những chương trình đào tạo nào?
+    - Tôi có thể xem danh sách các khóa học của khoa [Trường Thủy Sản](Khoa) không?
+    - Khoa [Khoa Môi trường và Tài nguyên thiên nhiên](Khoa) cung cấp những khóa học nào?
+    - Tôi muốn tìm hiểu các chương trình đào tạo của khoa [Viện Công nghệ sinh học và Thực phẩm](Khoa).
+    - Các ngành học do khoa [Khoa Khoa học Tự nhiên](Khoa) giảng dạy là gì?
+    - Khoa [Khoa Khoa học Xã hội & Nhân văn](Khoa) có đào tạo những ngành nào?
+    - Danh sách các khóa học của khoa [Viện Nghiên cứu Biến đổi Khí hậu](Khoa) là gì?
+    - Khoa [Khoa Ngoại ngữ](Khoa) có chương trình nào phù hợp với tôi không?
+    - Những khóa học nào đang mở tại khoa [Khoa Luật](Khoa)?
+    - Tôi muốn tìm hiểu về các chương trình đào tạo của khoa [Khoa Phát triển Nông thôn](Khoa).
+- intent: ask_training_by_audience
+  examples: |
+    - Những chương trình nào dành cho [sinh viên](Đối Tượng Và Số Lượng)?
+    - Tôi muốn biết các khóa học dành cho [giảng viên](Đối Tượng Và Số Lượng).
+    - Có khóa học nào dành cho [giáo viên](Đối Tượng Và Số Lượng) không?
+    
+    - Các khóa học nào phù hợp với [học sinh](Đối Tượng Và Số Lượng)?
+    - Tôi có thể tìm các chương trình đào tạo dành cho [nhân viên](Đối Tượng Và Số Lượng) không?
+    - Có chương trình nào dành riêng cho [Cán bộ](Đối Tượng Và Số Lượng) không?
+    - Những khóa học nào phù hợp với [học viên](Đối Tượng Và Số Lượng)?
+    - Tôi muốn biết về các chương trình đào tạo dành cho [nông dân](Đối Tượng Và Số Lượng).
+    - Các khóa học nào được thiết kế cho [Lãnh đạo](Đối Tượng Và Số Lượng)?
+    - Tôi muốn tìm hiểu các khóa học dành cho [Cử nhân](Đối Tượng Và Số Lượng).
+    - Có chương trình nào dành cho [Ban giám đốc](Đối Tượng Và Số Lượng) không?
+    - Những khóa học nào đang có dành cho [thạc sĩ](Đối Tượng Và Số Lượng)?
+    - Tôi có thể tham gia những khóa học nào nếu tôi là [công chức](Đối Tượng Và Số Lượng)?
+    - Có chương trình nào dành cho [nghiên cứu sinh](Đối Tượng Và Số Lượng) không?
+    - Tôi muốn biết về các khóa học dành cho [nghiên cứu viên](Đối Tượng Và Số Lượng).
+    - Những chương trình nào phù hợp với [hợp tác xã](Đối Tượng Và Số Lượng)?
+    - Tôi có thể tìm khóa học nào nếu tôi là [bác sĩ](Đối Tượng Và Số Lượng)?
+    - Cho tui các khóa học nào dành cho [chuyên viên](Đối Tượng Và Số Lượng)?
+    - Tui là [chủ tịch](Đối Tượng Và Số Lượng) thì có khóa học nào khônh?
+    - Danh sách khóa học dành cho [CEO](Đối Tượng Và Số Lượng)?
+    - Tìm các chương trình dành cho [THPT](Đối Tượng Và Số Lượng)?
+    - Các khóa học nào dành cho [THCS](Đối Tượng Và Số Lượng)?
+
+- intent: ask_training_by_instructor
+  examples: |
+    - Chương trình nào do giảng viên [Trần Thanh Hùng](Giảng Viên Chịu Trách Nhiệm) chịu trách nhiệm?
+    - Chương trình nào do giảng viên [Thanh Hùng](Giảng Viên Chịu Trách Nhiệm) chịu trách nhiệm?
+    - Có những chương trình nào của giảng viên [Trần Long Hải](Giảng Viên Chịu Trách Nhiệm)?
+    - Liệt kê các chương trình tập huấn mà giảng viên [Lý Thúy Kiều](Giảng Viên Chịu Trách Nhiệm) phụ trách
+    - Danh sách các chương trình tập huấn của giảng viên [Nguyễn Văn Hòa](Giảng Viên Chịu Trách Nhiệm)?
+    - Những chương trình nào do thầy/cô [Trần Ngọc Hải](Giảng Viên Chịu Trách Nhiệm) phụ trách?
+    - Các chương trình tập huấn nào do giảng viên [Vũ Ngọc Út](Giảng Viên Chịu Trách Nhiệm) phụ trách?
+    - Danh sách khóa học mà thầy [Nguyễn Hữu Thiện](Giảng Viên Chịu Trách Nhiệm) chịu trách nhiệm?
+    - Thầy [Nguyễn Lê Đức Huy](Giảng Viên Chịu Trách Nhiệm) có những chương trình nào?
+    - Liệt kê những chương trình tập huấn của cô [Nguyễn Thị Kiều Oanh](Giảng Viên Chịu Trách Nhiệm)
+    - Các khóa tập huấn nào do cô [Nguyễn Thị Thu Hà](Giảng Viên Chịu Trách Nhiệm) phụ trách?
+    - Cho tôi biết những chương trình nào mà giảng viên [Tống Thị Thùy Trang](Giảng Viên Chịu Trách Nhiệm) chịu trách nhiệm chính?
+    - Giảng viên [KS. Vũ Hùng Hải](Giảng Viên Chịu Trách Nhiệm) đang phụ trách các chương trình nào?
+    - Thầy [PGS. TS Nguyễn Thị Thu Nga](Giảng Viên Chịu Trách Nhiệm) tổ chức những chương trình nào?
+    - Những chương trình của cô [PGS. TS. Bùi Lê Anh Tuấn](Giảng Viên Chịu Trách Nhiệm)?
+    - Tôi muốn biết các chương trình do giảng viên [Ths. Hồ Phạm Thành Tâm](Giảng Viên Chịu Trách Nhiệm) chịu trách nhiệm?
+- intent: ask_related_programs
+  examples: |
+    - Có chương trình nào liên quan đến [Lập Trình Nhúng](Tên Chương Trình) không?
+    - Chương trình liên quan đến [LẬP TRÌNH NHÚNG NÂNG CAO](Tên Chương Trình)
+    - Liệt kê các chương trình tương tự [THIẾT KẾ VÀ PHÂN TÍCH THÍ NGHIỆM NÂNG CAO](Tên Chương Trình)
+    - Tìm các chương trình khác giống [THIẾT KẾ VÀ PHÂN TÍCH THÍ NGHIỆM](Tên Chương Trình)
+    - Có khóa nào khác liên quan đến [LẬP TRÌNH TRÍ TUỆ NHÂN TẠO VỚI PYTHON](Tên Chương Trình)?
+    - Các chương trình tương tự [TẬP HUẤN SỬ DỤNG PHẦN MỀM CAM TRONG LẬP TRÌNH GIA CÔNG TRÊN MÁY TIỆN CNC](Tên Chương Trình)
+    - Có chương trình nào giống [NHIẾP ẢNH SỐ VÀ XỬ LÝ ẢNH HẬU KỲ](Tên Chương Trình) không?
+    - Các khóa học khác về [PHÁT TRIỂN ỨNG DỤNG DI ĐỘNG ĐA NỀN TẢNG VỚI FLUTTER](Tên Chương Trình) là gì?
+    - Các chương trình tương tự [PHƯƠNG PHÁP LẬP KHÁNG SINH ĐỒ VÀ XÁC ĐỊNH MIC](Tên Chương Trình)?
+    - Tìm chương trình liên quan đến [CÔNG NGHỆ CHẾ BIẾN SẢN PHẨM TÔM THẺ CHÂN TRẮNG TẨM GIA VỊ SẤY](Tên Chương Trình).
+    - Các khóa học về [KỸ NĂNG DẪN CHƯƠNG TRÌNH VÀ PHỎNG VẤN](Tên Chương Trình) là gì?
+    - Chương trình nào về [KỸ NĂNG TỔ CHỨC SỰ KIỆN, QUẢN LÝ DỰ ÁN TRUYỀN THÔNG VÀ QUẢN LÝ KHỦNG HOẢNG TRUYỀN THÔNG](Tên Chương Trình)?
+    - Khóa học nào dạy [NÂNG CAO NĂNG LỰC QUẢN TRỊ VÀ ĐIỀU HÀNH HỢP TÁC XÃ THEO LUẬT NĂM 2023](Tên Chương Trình) tương tự?
+    - Chương trình khác liên quan về [NGHIỆP VỤ ĐẤU THẦU CƠ BẢN](Tên Chương Trình) có gì?
+    - Liệt kê các khóa học liên quan đến [GIÁM ĐỐC ĐIỀU HÀNH - CEO](Tên Chương Trình).
+    - Tìm các khóa học tương tự [QUẢN LÝ KINH TẾ - TÀI CHÍNH](Tên Chương Trình).
+    - Các khóa học liên quan đến [DƯỢC LIỆU VÀ HỢP CHẤT TỰ NHIÊN ỨNG DỤNG TRONG PHÒNG CHỐNG BÉO PHÌ](Tên Chương Trình)
 - lookup: Tên Chương Trình
   examples: |
     data/lookup_table.txt

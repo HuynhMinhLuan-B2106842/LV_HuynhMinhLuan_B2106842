@@ -47,3 +47,26 @@ rules:
   steps:
   - intent: ask_training_instructor
   - action: action_get_training_info
+
+- rule: Trả lời các khóa học theo số buổi
+  steps:
+  - intent: ask_training_sessions
+  - action: action_get_training_info
+
+- rule: Trả lời các khóa học theo khoa
+  steps:
+  - intent: ask_training_by_faculty
+  - action: action_get_training_info
+
+- rule: Trả lời các khóa học theo đối tượng
+  steps:
+  - intent: ask_training_by_audience
+  - action: action_get_training_info
+- rule: Trả lời các khóa học theo chịu trách nhiệm chính
+  steps:
+    - intent: ask_training_by_instructor
+    - action: action_get_training_info
+- rule: Trả lời các chương trình liên quan
+  steps:
+    - intent: ask_related_programs
+    - action: action_get_training_info

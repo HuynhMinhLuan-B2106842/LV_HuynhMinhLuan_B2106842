@@ -1,0 +1,67 @@
+{
+  "type": "IntentMaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "ask_training_audience": 0,
+        "ask_training_by_audience": 1,
+        "ask_training_by_faculty": 2,
+        "ask_training_content": 3,
+        "ask_training_duration": 4,
+        "ask_training_faculty": 5,
+        "ask_training_instructor": 6,
+        "ask_training_program": 7,
+        "ask_training_schedule": 8,
+        "ask_training_sessions": 9,
+        "back": 10,
+        "nlu_fallback": 11,
+        "out_of_scope": 12,
+        "restart": 13,
+        "session_start": 14
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_get_training_info": 13,
+        "utter_ask_training_audience": 14,
+        "utter_ask_training_by_audience": 15,
+        "utter_ask_training_by_faculty": 16,
+        "utter_ask_training_content": 17,
+        "utter_ask_training_duration": 18,
+        "utter_ask_training_faculty": 19,
+        "utter_ask_training_instructor": 20,
+        "utter_ask_training_program": 21,
+        "utter_ask_training_schedule": 22,
+        "utter_ask_training_sessions": 23
+      },
+      "entities": {
+        "Khoa": 0,
+        "Tên Chương Trình": 1,
+        "session_count": 2,
+        "Đối Tượng Và Số Lượng": 3
+      },
+      "slots": {
+        "Tên Chương Trình_0": 0,
+        "Khoa_0": 1,
+        "Đối Tượng Và Số Lượng_0": 2,
+        "session_count_0": 3
+      },
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

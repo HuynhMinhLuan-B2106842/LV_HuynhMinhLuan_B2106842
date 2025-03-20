@@ -118,3 +118,43 @@ exports.xoaChuongTrinh = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+// Hàm chuẩn hóa chuỗi tìm kiếm
+const normalizeText = (text) => {
+  return text
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .toLowerCase();
+};
+
+exports.timKiemChuongTrinh = async (req, res) => {
+  try {
+    const searchTerm = req.query.q || "";
+    const normalizedSearch = normalizeText(searchTerm);
+
+    const programs = await ChuongTrinhTapHuan.find({})
+      .populate('chiuTrachNhiemChinh', 'ten')
+      .populate('khoa', 'ten');
+
+    const filteredPrograms = programs.filter(program => {
+      const fieldsToSearch = [
+        program.tenChuongTrinh,
+        program.thoiGianTapHuan,
+        program.thoiDiemToChuc,
+        program.doiTuongVaSoLuong,
+        program.noiDungTapHuan,
+        program.khoa?.ten,
+        ...(program.chiuTrachNhiemChinh || []).map(gv => gv.ten)
+      ];
+
+      return fieldsToSearch.some(field =>
+        field ? normalizeText(field).includes(normalizedSearch) : false
+      );
+    });
+
+    res.json(filteredPrograms);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

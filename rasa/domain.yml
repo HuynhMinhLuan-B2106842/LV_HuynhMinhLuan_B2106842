@@ -42,9 +42,20 @@ intents:
   - ask_training_content
   - ask_training_faculty
   - ask_training_instructor
+  - ask_training_sessions
+  - ask_training_by_faculty
+  - ask_training_by_audience
+  - ask_training_by_instructor
+  - ask_related_programs
 
 entities:
   - Tên Chương Trình
+  - session_count
+  - Khoa
+  - Đối Tượng Và Số Lượng
+  - Giảng Viên Chịu Trách Nhiệm
+
+
 
 slots:
   Tên Chương Trình:
@@ -52,16 +63,32 @@ slots:
     mappings:
       - type: from_entity
         entity: Tên Chương Trình
+  Khoa:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: Khoa
 
+  Giảng Viên Chịu Trách Nhiệm:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: Giảng Viên Chịu Trách Nhiệm
+
+  Đối Tượng Và Số Lượng:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: Đối Tượng Và Số Lượng      
+
+  session_count:
+    type: text      
+    mappings:
+      - type: from_entity
+        entity: session_count
 responses:
   utter_ask_training_program:
-    - text: "Các chương trình tập huấn hiện tại:\n
-        1. Lập trình nhúng - CTU.COE10\n
-        2. Lập trình nhúng nâng cao - CTU.COE12\n
-        3. Thiết kế và phân tích thí nghiệm - CTU.COE09\n
-        4. Thiết kế và phân tích thí nghiệm nâng cao - CTU.COE11\n
-        5. An toàn điện - CTU.COE01\n
-        Bạn quan tâm đến chương trình nào?"
+    - text: "Bạn có thể truy cập http://localhost:3001/programs để xem danh sách và chi tiết các chương trình tập huấn."
 
   utter_ask_training_duration:
     - text: "Chương trình {Tên Chương Trình} có thời gian tập huấn là {Thời Gian Tập Huấn}."
@@ -80,6 +107,15 @@ responses:
 
   utter_ask_training_instructor:
     - text: "Giảng viên chịu trách nhiệm giảng dạy {Tên Chương Trình}: {Giảng Viên Chịu Trách Nhiệm}."
+  
+  utter_ask_training_sessions:
+    - text: "Các chương trình tập huấn {session_count} buổi bao gồm:\n{programs}"  
+
+  utter_ask_training_by_faculty:
+    - text: "Các chương trình thuộc khoa {Khoa}:\n{programs}"
+
+  utter_ask_training_by_audience:
+    - text: "Các chương trình dành cho {Đối Tượng Và Số Lượng}:\n{programs}"    
 
 actions:
   - action_get_training_info
