@@ -4,109 +4,47 @@ recipe: default.v1
 
 # The assistant project unique identifier
 # This default value must be replaced with a unique assistant name within your deployment
-assistant_id: 20250310-235426-mechanical-step
+assistant_id: 20250320-211230-modern-citron
 
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
-language: vi  # Nếu bot dùng tiếng Việt, hãy để "vi"
+language: en
 
 pipeline:
-  - name: WhitespaceTokenizer
-  - name: RegexFeaturizer
-  - name: LexicalSyntacticFeaturizer
-  - name: CountVectorsFeaturizer
-  - name: CountVectorsFeaturizer
-    analyzer: char_wb
-    min_ngram: 1
-    max_ngram: 4
-  - name: DIETClassifier
-    epochs: 100
-    constrain_similarities: true
-  - name: EntitySynonymMapper
-  - name: RegexEntityExtractor
-    use_lookup_tables: True  
-    use_regexes: True
-  - name: ResponseSelector
-    epochs: 100
-    constrain_similarities: true
-  - name: FallbackClassifier
-    threshold: 0.3
-    ambiguity_threshold: 0.1
-# pipeline:
-#   - name: "components.vietnamese_tokenizer.VietnameseTokenizer"
-#     intent_tokenization_flag: false  # Thêm dòng này
-#     case_sensitive: false           # Thêm dòng này
-#   - name: RegexFeaturizer
-#   - name: LexicalSyntacticFeaturizer
-#   - name: CountVectorsFeaturizer
-#   - name: CountVectorsFeaturizer
-#     analyzer: char_wb
-#     min_ngram: 1
-#     max_ngram: 4
-#   - name: DIETClassifier
-#     epochs: 100
-#     constrain_similarities: true
-#   - name: EntitySynonymMapper
-#   - name: RegexEntityExtractor
-#     use_lookup_tables: True
-#     use_regexes: True
-#   - name: ResponseSelector
-#     epochs: 100
-#     constrain_similarities: true
-#   - name: FallbackClassifier
-#     threshold: 0.3
-#     ambiguity_threshold: 0.1    
-# pipeline:
-#   - name: WhitespaceTokenizer
-#   - name: LanguageModelFeaturizer
-#     model_name: "bert"
-#     model_weights: "rasa/LaBSE"
-#   - name: DIETClassifier
-#     epochs: 100
-
-# # No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
-# # If you'd like to customize it, uncomment and adjust the pipeline.
-# # See https://rasa.com/docs/rasa/tuning-your-model for more information.
-#   - name: WhitespaceTokenizer
-#   - name: RegexFeaturizer
-#   - name: LexicalSyntacticFeaturizer
-#   - name: CountVectorsFeaturizer
-#   - name: CountVectorsFeaturizer
-#     analyzer: char_wb
-#     min_ngram: 1
-#     max_ngram: 4
-#   - name: DIETClassifier
-#     epochs: 100
-#     constrain_similarities: true
-#   - name: EntitySynonymMapper
-#   - name: ResponseSelector
-#     epochs: 100
-#     constrain_similarities: true
-#   - name: FallbackClassifier
-#     threshold: 0.3
-#     ambiguity_threshold: 0.1
+# No configuration for the NLU pipeline was provided. The following default pipeline was used to train your model.
+# If you'd like to customize it, uncomment and adjust the pipeline.
+# See https://rasa.com/docs/rasa/tuning-your-model for more information.
+- name: WhitespaceTokenizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: char_wb
+  min_ngram: 1
+  max_ngram: 4
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 100
+  constrain_similarities: true
+- name: FallbackClassifier
+  threshold: 0.3
+  ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
 policies:
-  - name: MemoizationPolicy
-  - name: RulePolicy
-  - name: UnexpecTEDIntentPolicy
-    max_history: 5
-    epochs: 100
-  - name: TEDPolicy
-    max_history: 5
-    epochs: 100
-    constrain_similarities: true
-# # No configuration for policies was provided. The following default policies were used to train your model.
-# # If you'd like to customize them, uncomment and adjust the policies.
-# # See https://rasa.com/docs/rasa/policies for more information.
-#   - name: MemoizationPolicy
-#   - name: RulePolicy
-#   - name: UnexpecTEDIntentPolicy
-#     max_history: 5
-#     epochs: 100
-#   - name: TEDPolicy
-#     max_history: 5
-#     epochs: 100
-#     constrain_similarities: true
+# No configuration for policies was provided. The following default policies were used to train your model.
+# If you'd like to customize them, uncomment and adjust the policies.
+# See https://rasa.com/docs/rasa/policies for more information.
+- name: MemoizationPolicy
+- name: RulePolicy
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true

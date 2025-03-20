@@ -1,0 +1,14 @@
+{
+  "0": "ask_related_programs",
+  "1": "ask_training_audience",
+  "2": "ask_training_by_audience",
+  "3": "ask_training_by_faculty",
+  "4": "ask_training_by_instructor",
+  "5": "ask_training_content",
+  "6": "ask_training_duration",
+  "7": "ask_training_faculty",
+  "8": "ask_training_instructor",
+  "9": "ask_training_program",
+  "10": "ask_training_schedule",
+  "11": "ask_training_sessions"
+}
